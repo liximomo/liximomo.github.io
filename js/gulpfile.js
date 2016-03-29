@@ -8,7 +8,7 @@ var webpack = require('webpack');
 gulp.task('build', ['build:prod']);
 
 gulp.task('default', ['build:dev'], function() {
-  gulp.watch('./src/*.js', ['build:dev']);
+  gulp.watch('./src/**/*.js', ['build:dev']);
 });
 
 gulp.task('build:dev', function(cb) {

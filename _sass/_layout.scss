@@ -12,19 +12,43 @@
 
     background: white;
     transition: .3s transform;
+
+    &--affixed{
+        @extend .site-header;
+        position: fixed;
+        top: 0;
+
+        &.is-inView {
+            visibility: visible;
+            transform: translate3D(0, 0, 0);
+        }
+
+        &.is-hidden{
+            visibility: hidden;
+            transform: translate3D(0, -100%, 0);
+        }
+    }
 }
 
-.site-header--affixed{
-    position: fixed;
-    top: 0;
-    transform: translate3D(0, 0, 0);
-}
+.postActionsFooter {
+    transition: .3s transform;
 
-.site-header--affixed.is-inView{
-}
+    &--affixed {
+        @extend .postActionsFooter;
+        position: fixed;
+        bottom: 0;
+        background: white;
 
-.site-header--affixed.is-hidden{
-   transform: translate3D(0, -100%, 0);
+        &.is-inView {
+            transform: translate3D(0, 0, 0);
+            visibility: visible;
+        }
+
+        &.is-hidden{
+             visibility: hidden;
+             transform: translate3D(0, 100%, 0);
+        }
+    }
 }
 
 .site-title {
@@ -64,7 +88,6 @@
         top: 9px;
         right: $spacing-unit / 2;
         background-color: $background-color;
-        border: 1px solid $grey-color-light;
         border-radius: 5px;
         text-align: right;
 
@@ -89,12 +112,20 @@
 
         .trigger {
             clear: both;
-            display: none;
+            //display: none;
+            transform: scaleY(0);
+            transform-origin: right top ;
+            transition: transform .2s;
         }
 
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
+        &:hover {
+            border: 1px solid $grey-color-light;
+
+            .trigger {
+                transform: scaleY(1);
+                display: block;
+                padding-bottom: 5px;
+            }
         }
 
         .page-link {
@@ -155,6 +186,11 @@
 .footer-col-3 {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
     width:         calc(45% - (#{$spacing-unit} / 2));
+}
+
+.footer-col--action {
+    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
+    width:         calc(100% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-laptop) {

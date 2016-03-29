@@ -36,7 +36,7 @@ export default class ImmerseScroller {
         let currentScrollY = this.latestKnownScrollY;
         let scrollOffset = currentScrollY - this.lastScrollY;
         this.ticking = false;
-        const isInRegion = currentScrollY >= this.start  && (this.end == -1 || currentScrollY <= this.end)
+        const isInRegion = currentScrollY >= this.start  && (this.end == -1 || currentScrollY <= (this.end - window.innerHeight) )
         if (!isInRegion || Math.abs(scrollOffset) <= this.delta) {
             return;
         }

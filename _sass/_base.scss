@@ -67,6 +67,7 @@ figcaption {
  */
 ul, ol {
     margin-left: $spacing-unit;
+    list-style: none;
 }
 
 li {
@@ -172,6 +173,13 @@ pre {
 }
 
 
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
 
 /**
  * Clearfix
@@ -190,16 +198,37 @@ pre {
 /**
  * Icons
  */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
-    }
+svg.icon  {
+    display: inline-block;
+    vertical-align: middle;
 }
+
+/**
+ * btns
+ */
+  .btn {
+
+  }
+
+ .btn--icon {
+    background: transparent;
+    border: none;
+
+    &:hover ,
+    &:active,
+    &:focus,
+    &:visited {
+        outline: none;
+        border: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    } 
+ }
+
+ .btn--iconAndLabel {
+     .icon {
+        padding-right: 4px;
+    }
+ }

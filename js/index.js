@@ -57,8 +57,6 @@
 
 	var _ImmerseScroller2 = _interopRequireDefault(_ImmerseScroller);
 
-	var _viewHelp = __webpack_require__(3);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var immerseHeader = new _ImmerseScroller2.default(document.querySelector('#site-header'));
@@ -122,7 +120,7 @@
 	            var currentScrollY = this.latestKnownScrollY;
 	            var scrollOffset = currentScrollY - this.lastScrollY;
 	            this.ticking = false;
-	            var isInRegion = currentScrollY >= this.start && (this.end == -1 || currentScrollY <= this.end);
+	            var isInRegion = currentScrollY >= this.start && (this.end == -1 || currentScrollY <= this.end - window.innerHeight);
 	            if (!isInRegion || Math.abs(scrollOffset) <= this.delta) {
 	                return;
 	            }
@@ -141,31 +139,6 @@
 	}();
 
 	exports.default = ImmerseScroller;
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.isInView = isInView;
-	/**
-	  *  browser view helper 
-	  * 
-	  */
-
-	function isInView(element) {
-	  var docViewTop = window.scrollY;
-	  var docViewBottom = docViewTop + window.innerHeight;
-
-	  var elemTop = element.offsetTop;
-	  var elemBottom = elemTop + element.clientHeight;
-
-	  return elemBottom <= docViewBottom && elemTop >= docViewTop;
-	}
 
 /***/ }
 /******/ ]);

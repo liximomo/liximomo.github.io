@@ -2,7 +2,8 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    'post': ["./src/post.js"],
+    'index': ["./src/index.js"],
+    'post': ["./src/post.js"]
   },
   output: {
     path: __dirname,
