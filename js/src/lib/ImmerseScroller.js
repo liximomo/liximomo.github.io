@@ -8,7 +8,7 @@ export default class ImmerseScroller {
                 window.setTimeout(callback, 1000 / 60);
              };
         this.latestKnownScrollY  = 0;
-        this.lastScrollY = start;
+        this.lastScrollY = 0;
         this.delta = 5;
         this.ticking = false;
         this.element = element;
@@ -36,11 +36,11 @@ export default class ImmerseScroller {
         let currentScrollY = this.latestKnownScrollY;
         let scrollOffset = currentScrollY - this.lastScrollY;
         this.ticking = false;
-        const isInRegion = currentScrollY >= this.start  && (this.end == -1 || currentScrollY <= (this.end - window.innerHeight) )
-        if (!isInRegion || Math.abs(scrollOffset) <= this.delta) {
+        const isInRegion = currentScrollY >= this.start  && (this.end < 0 || currentScrollY <= (this.end - window.innerHeight) )
+        if (Math.abs(scrollOffset) <= this.delta) {
             return;
         }
-        if (scrollOffset < 0) {
+        if (scrollOffset < 0 && isInRegion) {
             this.element.classList.remove('is-hidden');
             this.element.classList.add('is-inView');
         } else {

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"con",
+				"container"
+			],
+			[
 				"di",
 				"direction"
 			],
@@ -51,7 +55,117 @@
 			"file": "_includes/header.html",
 			"settings":
 			{
-				"buffer_size": 1158,
+				"buffer_size": 1168,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_includes/post-footer.html",
+			"settings":
+			{
+				"buffer_size": 2336,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/lib/ImmerseScroller.js",
+			"settings":
+			{
+				"buffer_size": 1735,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/lib/Popover.js",
+			"settings":
+			{
+				"buffer_size": 1787,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/index.js",
+			"settings":
+			{
+				"buffer_size": 156,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/post.js",
+			"settings":
+			{
+				"buffer_size": 648,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/lib/viewHelp.js",
+			"settings":
+			{
+				"buffer_size": 1081,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/src/lib/browserCompatible.js",
+			"settings":
+			{
+				"buffer_size": 246,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_layouts/post.html",
+			"settings":
+			{
+				"buffer_size": 628,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ".post-list {\n    margin-left: 0;\n    list-style: none;\n\n    > li {\n        margin-bottom: $spacing-unit;\n    }\n}\n\n.post-meta {\n    font-size: $small-font-size;\n    color: $grey-color;\n}\n\na.post-link {\n    color: inherit;\n    display: block;\n    font-size: 24px;\n    &:hover {\n        text-decoration: none;\n    }\n}\n\n\n\n/**\n * Posts\n */\n.post-header {\n    margin-bottom: $spacing-unit;\n}\n\n.post-title {\n    font-size: 42px;\n    letter-spacing: -1px;\n    line-height: 1;\n\n    @include media-query($on-laptop) {\n        font-size: 36px;\n    }\n}\n\n.post-content {\n    margin-bottom: $spacing-unit;\n\n    h2 {\n        font-size: 32px;\n\n        @include media-query($on-laptop) {\n            font-size: 28px;\n        }\n    }\n\n    h3 {\n        font-size: 26px;\n\n        @include media-query($on-laptop) {\n            font-size: 22px;\n        }\n    }\n\n    h4 {\n        font-size: 20px;\n\n        @include media-query($on-laptop) {\n            font-size: 18px;\n        }\n    }\n}",
+			"file": "_sass/module/_post.scss",
+			"file_size": 965,
+			"file_write_time": 131037817573290193,
+			"settings":
+			{
+				"buffer_size": 965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/main.scss",
+			"settings":
+			{
+				"buffer_size": 1163,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_sass/modules/_page.scss",
+			"settings":
+			{
+				"buffer_size": 553,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/liximomo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+			"settings":
+			{
+				"buffer_size": 4280,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "/**\n * popover\n */\n\n.popOver {\n    $bkColor: #fff;\n    $padding: 10px;\n    position: relative;\n    background: $bkColor;\n    padding: $padding;\n    border-radius: 4px;\n    box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);\n\n    &:after {\n      $size: 20px;\n      content: \"\";\n      position: absolute;\n      background: $bkColor;\n      height: $size;\n      width: $size;\n      left: 50%;\n      bottom: - ($size/2*1.41 - $padding/2);\n      transform: rotate(45deg);\n      box-shadow: 1px 1px 1px -1px rgba(0,0,0,.8);\n    }\n}",
+			"file": "_sass/module/_page.scss",
+			"file_size": 535,
+			"file_write_time": 131037818933460724,
+			"settings":
+			{
+				"buffer_size": 535,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,7 +173,23 @@
 			"file": "_sass/_layout.scss",
 			"settings":
 			{
-				"buffer_size": 4667,
+				"buffer_size": 5848,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_sass/modules/_post.scss",
+			"settings":
+			{
+				"buffer_size": 965,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "_sass/_base.scss",
+			"settings":
+			{
+				"buffer_size": 2393,
 				"line_ending": "Unix"
 			}
 		},
@@ -115,12 +245,16 @@
 		"/home/liximomo/myblog/_layouts",
 		"/home/liximomo/myblog/_posts",
 		"/home/liximomo/myblog/_sass",
+		"/home/liximomo/myblog/_sass/modules",
 		"/home/liximomo/myblog/css",
 		"/home/liximomo/myblog/js",
-		"/home/liximomo/myblog/js/src"
+		"/home/liximomo/myblog/js/src",
+		"/home/liximomo/myblog/js/src/lib"
 	],
 	"file_history":
 	[
+		"/home/liximomo/myblog/_sass/_post-layout.scss",
+		"/home/liximomo/blog/_sass/_layout.scss",
 		"/home/liximomo/myblog/_includes/footer.html",
 		"/home/liximomo/myblog/_includes/icon-github.html",
 		"/home/liximomo/myblog/_includes/icon.html",
@@ -134,7 +268,6 @@
 		"/home/liximomo/myblog/css/main.scss",
 		"/home/liximomo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
 		"/home/liximomo/myblog/js/src/post.js",
-		"/home/liximomo/myblog/_sass/_post-layout.scss",
 		"/home/liximomo/myblog/_includes/post-footer.html",
 		"/home/liximomo/myblog/js/src/lib/viewHelp.js",
 		"/home/liximomo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
@@ -156,7 +289,6 @@
 		"/home/liximomo/myblog/_includes/header.html",
 		"/home/liximomo/myblog/js/src/lib/browserCompatible.js",
 		"/home/liximomo/myblog/js/index.js",
-		"/home/liximomo/blog/_sass/_layout.scss",
 		"/home/liximomo/myblog/js/package.json",
 		"/home/liximomo/myblog/js/npm-debug.log",
 		"/usr/bin/gcc",
@@ -170,11 +302,11 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 98.0,
 		"where_history":
 		[
 		]
@@ -184,6 +316,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"top",
+			"rect",
+			"x",
+			"y",
+			"y ",
+			"pos",
+			"wrapper",
+			"footer-",
+			"footer-row-wrapper",
 			"button",
 			"icon",
 			"footer-col-wrapper",
@@ -210,7 +351,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -226,8 +367,8 @@
 						"selection":
 						[
 							[
-								745,
-								745
+								239,
+								239
 							]
 						],
 						"settings":
@@ -240,7 +381,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -249,7 +390,213 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1158,
+						"buffer_size": 1168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								57,
+								57
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "_includes/post-footer.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2336,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								145,
+								145
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/src/lib/ImmerseScroller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1735,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1735,
+								1735
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 480.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/src/lib/Popover.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1787,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/src/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								134,
+								134
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/src/post.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 648,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								648,
+								648
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/src/lib/viewHelp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1081,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								371,
+								371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "js/src/lib/browserCompatible.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 246,
 						"regions":
 						{
 						},
@@ -262,7 +609,122 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "_layouts/post.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								57,
+								57
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "_sass/module/_post.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								965,
+								965
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 614.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "css/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								980,
+								980
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "_sass/modules/_page.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 553,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								553,
+								553
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -270,24 +732,84 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "_sass/_layout.scss",
+					"buffer": 13,
+					"file": "/home/liximomo/.config/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4667,
+						"buffer_size": 4280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1809,
-								1809
+								1905,
+								1905
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "_sass/module/_page.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								535,
+								535
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "_sass/_layout.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5848,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4976,
+								4976
 							]
 						],
 						"settings":
@@ -297,14 +819,74 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1560.0,
+						"translation.y": 4570.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "_sass/modules/_post.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 965,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								313,
+								313
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 17,
+					"file": "_sass/_base.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2393,
+								2393
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2880.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
 					"file": "_config.yml",
 					"semi_transient": false,
 					"settings":
@@ -330,7 +912,7 @@
 						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 18,
 					"type": "text"
 				}
 			]

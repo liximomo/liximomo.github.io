@@ -73,7 +73,7 @@
 	            window.setTimeout(callback, 1000 / 60);
 	        };
 	        this.latestKnownScrollY = 0;
-	        this.lastScrollY = start;
+	        this.lastScrollY = 0;
 	        this.delta = 5;
 	        this.ticking = false;
 	        this.element = element;
@@ -106,11 +106,11 @@
 	            var currentScrollY = this.latestKnownScrollY;
 	            var scrollOffset = currentScrollY - this.lastScrollY;
 	            this.ticking = false;
-	            var isInRegion = currentScrollY >= this.start && (this.end == -1 || currentScrollY <= this.end - window.innerHeight);
-	            if (!isInRegion || Math.abs(scrollOffset) <= this.delta) {
+	            var isInRegion = currentScrollY >= this.start && (this.end < 0 || currentScrollY <= this.end - window.innerHeight);
+	            if (Math.abs(scrollOffset) <= this.delta) {
 	                return;
 	            }
-	            if (scrollOffset < 0) {
+	            if (scrollOffset < 0 && isInRegion) {
 	                this.element.classList.remove('is-hidden');
 	                this.element.classList.add('is-inView');
 	            } else {
@@ -144,12 +144,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	new _Popover2.default('#shareBtn', '#sharePopOver');
-
+	var pop = document.querySelector('#sharePopOver');
+	new _Popover2.default('#shareBtn', pop, 20);
+	new _Popover2.default('#shareBtnOnBar', pop, 20, document.querySelector('.postActionsBar-container'));
 	var actionFooter = document.querySelector('.postActionsFooter');
-	var articleBegin = (0, _viewHelp.getPosition)(document.querySelector('.main-post')).y;
+	// let articleBegin = getPosition(document.querySelector('.main-post')).y;
 	var actionBegin = (0, _viewHelp.getPosition)(actionFooter).y;
-	var immerseActionFooter = new _ImmerseScroller2.default(document.querySelector('.postActionsFooter--affixed'), articleBegin, actionBegin);
+	var immerseActionFooter = new _ImmerseScroller2.default(document.querySelector('.postActionsBar-content'), 0, actionBegin);
 	immerseActionFooter.init();
 
 /***/ },
@@ -170,15 +171,17 @@
 
 	var Popover = function () {
 	  function Popover(toggle, popover) {
-	    var direction = arguments.length <= 2 || arguments[2] === undefined ? 'top' : arguments[2];
+	    var offset = arguments.length <= 2 || arguments[2] === undefined ? 5 : arguments[2];
+	    var container = arguments.length <= 3 || arguments[3] === undefined ? document.body : arguments[3];
+	    var direction = arguments.length <= 4 || arguments[4] === undefined ? 'top' : arguments[4];
 
 	    _classCallCheck(this, Popover);
 
 	    this.toggle = document.querySelector(toggle);
-	    this.popover = document.querySelector(popover);
+	    this.popover = popover;
 	    this.direction = direction;
-	    this.isShow = false;
-
+	    this.offset = offset;
+	    this.container = container;
 	    this.popover.remove();
 	    this.popover.style.position = 'absolute';
 	    this.popover.style.display = 'block';
@@ -187,17 +190,17 @@
 
 	  _createClass(Popover, [{
 	    key: 'show',
-	    value: function show() {
-	      var pos = (0, _viewHelp.getPosition)(this.toggle);
-	      var rect = this.toggle.getBoundingClientRect();
+	    value: function show(toggle) {
+	      var pos = (0, _viewHelp.getPosition)(this.toggle, this.container);
+	      var rect = toggle.getBoundingClientRect();
 	      pos.height = rect.height;
 	      pos.width = rect.width;
 
 	      this.popover.style.visibility = 'hidden';
-	      document.body.appendChild(this.popover);
+	      this.container.appendChild(this.popover);
 
 	      var actualWidth = this.popover.clientWidth;
-	      var actualHeight = this.popover.clientHeight + 20;
+	      var actualHeight = this.popover.clientHeight + this.offset;
 
 	      var tp = null;
 	      switch (this.direction) {
@@ -222,13 +225,12 @@
 	    }
 	  }, {
 	    key: 'handleToggle',
-	    value: function handleToggle() {
-	      if (this.isShow) {
+	    value: function handleToggle(event) {
+	      if (this.popover.parentElement) {
 	        this.popover.remove();
 	      } else {
-	        this.show();
+	        this.show(event.currentTarget);
 	      }
-	      this.isShow = !this.isShow;
 	    }
 	  }]);
 
@@ -268,7 +270,7 @@
 
 	  var xPos = 0;
 	  var yPos = 0;
-	  while (el !== relateTo) {
+	  while (el && el !== relateTo) {
 	    if (el.tagName == "BODY") {
 	      // deal with browser quirks with body/window/document and page scroll
 	      var xScroll = el.scrollLeft || document.documentElement.scrollLeft;

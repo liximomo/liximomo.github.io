@@ -20,27 +20,33 @@
   </div>
 
   <!-- immerseFooter -->
-  <div class="wrapper">
-    <div class="postActionsFooter--affixed is-hidden">
-      <div class="pull-right">
-        <button class="btn btn--icon" title="share this post on other sites" id="shareBtn">
-          {% include icon.html icon="share" size="29" %}
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="wrapper">
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col--action">
-        <div class="postActionsFooter">
+  <div class="postActionsBar">
+    <div class="postActionsBar-container ">
+      <div class="row postActionsBar-content postActionsBar-content--affixed is-hidden">
+        <div class="postActions clearfix">
           <div class="pull-right">
-            <button class="btn btn--icon" title="share this post on other sites" id="shareBtn">
+            <button class="btn btn--icon" title="share this post on other sites" id="shareBtnOnBar">
               {% include icon.html icon="share" size="29" %}
             </button>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <div class="row postActionsFooter">
+      <div class="postActions  clearfix">
+        <div class="pull-right">
+          <button class="btn btn--icon" title="share this post on other sites" id="shareBtn">
+            {% include icon.html icon="share" size="29" %}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>{{ site.title }}</li>
@@ -66,5 +72,6 @@
         <p>{{ site.description }}</p>
       </div>
     </div>
+
   </div>
 </footer>

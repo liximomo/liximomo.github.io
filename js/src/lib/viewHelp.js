@@ -16,7 +16,7 @@ export function isInView(element) {
 export function getPosition(el, relateTo=document.body) {
   var xPos = 0;
   var yPos = 0;
-  while (el !== relateTo ) {
+  while (el && el !== relateTo ) {
     if (el.tagName == "BODY") {
       // deal with browser quirks with body/window/document and page scroll
       var xScroll = el.scrollLeft || document.documentElement.scrollLeft;

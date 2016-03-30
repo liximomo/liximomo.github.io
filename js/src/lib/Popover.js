@@ -1,30 +1,30 @@
 import { getPosition } from './viewHelp';
 
 export default class Popover {
-  constructor(toggle, popover, direction = 'top') {
+  constructor(toggle, popover, offset = 5, container = document.body, direction = 'top') {
     this.toggle = document.querySelector(toggle);
-    this.popover = document.querySelector(popover);
+    this.popover = popover;
     this.direction = direction;
-    this.isShow = false;
-
+    this.offset = offset;
+    this.container = container;
     this.popover.remove();
     this.popover.style.position = 'absolute';
     this.popover.style.display = 'block';
     this.toggle.addEventListener('click', this.handleToggle.bind(this), false);
   }
 
-  show() {
-    const pos = getPosition(this.toggle);
-    const rect = this.toggle.getBoundingClientRect();
+  show(toggle) {
+    const pos = getPosition(this.toggle, this.container);
+    const rect = toggle.getBoundingClientRect();
     pos.height = rect.height;
     pos.width = rect.width;
 
     this.popover.style.visibility = 'hidden';
-    document.body.appendChild(this.popover);
+    this.container.appendChild(this.popover);
     
 
     const actualWidth = this.popover.clientWidth;
-    const actualHeight = this.popover.clientHeight + 20;
+    const actualHeight = this.popover.clientHeight + this.offset;
 
     let tp = null;
     switch (this.direction) {
@@ -48,12 +48,11 @@ export default class Popover {
     return;
   }
 
-  handleToggle() {
-    if (this.isShow) {
+  handleToggle(event) {
+    if (this.popover.parentElement) {
       this.popover.remove();
     } else {
-      this.show();
+      this.show(event.currentTarget);
     }
-    this.isShow = !this.isShow;
   }
 }
