@@ -59,21 +59,26 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $brand-color;
-    height: $site-header-height;
-
     width: 100%;
 
     // Positioning context for the mobile navigation icon
     position: relative;
 
-    background: white;
+    background: $primary-color;
     transition: .3s transform;
 
-    &--affixed{
-        @extend .site-header;
+    &--placeholder {
+        height: $site-header-height;
+    }
+
+    &--affixed {
+        height: $site-header-bar-height;
         position: fixed;
         top: 0;
+        
+        &.is-active {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+        }
 
         &.is-inView {
             transform: translate3D(0, 0, 0);
@@ -98,16 +103,21 @@
     }
 
     &-content {
+        background: white;
+        box-shadow: 0 0 1px rgba(0,0,0,.44);
+        border-radius: 3px 3px 0 0;
+        transition: .3s transform;
+        left: $spacing-unit;
+        right: $spacing-unit;
 
         &--affixed {
             position: absolute;
-            left: $spacing-unit;
-            right: $spacing-unit;
             bottom: 0;
-            background: white;
-            box-shadow: 0 0 1px rgba(0,0,0,.44);
-            border-radius: 3px 3px 0 0;
-            transition: .3s transform;
+
+            @include media-query($on-palm) {
+                left: 0;
+                right: 0;
+            }
 
             &.is-inView {
                 transform: translate3D(0, 0, 0);
@@ -120,17 +130,20 @@
     }
 }
 
-.site-title {
-    font-size: 26px;
+.page-title {
+    $fz: 52px;
+    color: white;
+    font-size: $fz;
     font-weight: 300;
     line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
-    float: left;
+    transition: transform .2s, font-size .2s;
+    transform: translate3D(0, $site-header-height*0.65, 0) ;
 
-    &,
-    &:visited {
-        color: $grey-color-dark;
+    &.is-active {
+        font-size: $fz/2;
+        transform: translate3D(0, 0, 0) ;
     }
 }
 
@@ -143,7 +156,7 @@
     }
 
     .page-link {
-        color: $text-color;
+        color: white;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the last one
@@ -184,7 +197,7 @@
             //display: none;
             transform: scaleY(0);
             transform-origin: right top ;
-            transition: transform .2s;
+            transition: .1s  transform ;
         }
 
         &:hover {
@@ -284,7 +297,7 @@
  */
 .page-content {
     padding: $spacing-unit 0;
-    padding-top: $spacing-unit + $site-header-height;
+    padding-top: $spacing-unit;
 }
 
 .page-heading {

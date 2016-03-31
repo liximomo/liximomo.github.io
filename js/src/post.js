@@ -8,5 +8,11 @@ new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-
 let actionFooter = document.querySelector('.postActionsFooter');
 // let articleBegin = getPosition(document.querySelector('.main-post')).y;
 let actionBegin = getPosition(actionFooter).y;
-let immerseActionFooter = new ImmerseScroller(document.querySelector('.postActionsBar-content'), 0, actionBegin);
+let immerseActionFooter = new ImmerseScroller({
+  element: document.querySelector('.postActionsBar-content'),
+  end: actionBegin - actionFooter.clientHeight,
+  inClass: 'postActionsBar-content--affixed',
+  upClass: 'is-inView',
+  downClass: 'is-hidden'
+});
 immerseActionFooter.init();

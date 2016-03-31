@@ -63,28 +63,24 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var ImmerseScroller = function () {
-	    function ImmerseScroller(element) {
-	        var start = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
-	        var end = arguments.length <= 2 || arguments[2] === undefined ? -1 : arguments[2];
-
+	    function ImmerseScroller() {
 	        _classCallCheck(this, ImmerseScroller);
 
 	        window.requestAnimFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
 	            window.setTimeout(callback, 1000 / 60);
 	        };
-	        this.latestKnownScrollY = 0;
-	        this.lastScrollY = 0;
-	        this.delta = 5;
-	        this.ticking = false;
-	        this.element = element;
-	        this.start = start;
-	        this.end = end;
+	        this.hooks = [];
 	    }
 
 	    _createClass(ImmerseScroller, [{
 	        key: 'init',
 	        value: function init() {
 	            window.addEventListener('scroll', this.onScroll.bind(this), false);
+	        }
+	    }, {
+	        key: 'register',
+	        value: function register(anims) {
+	            this.hooks.concat(anims);
 	        }
 	    }, {
 	        key: 'onScroll',
@@ -110,12 +106,19 @@
 	            if (Math.abs(scrollOffset) <= this.delta) {
 	                return;
 	            }
-	            if (scrollOffset < 0 && isInRegion) {
-	                this.element.classList.remove('is-hidden');
-	                this.element.classList.add('is-inView');
+
+	            if (isInRegion) {
+	                this.element.classList.add(this.inClass);
 	            } else {
-	                this.element.classList.remove('is-inView');
-	                this.element.classList.add('is-hidden');
+	                this.element.classList.remove(this.inClass);
+	            }
+
+	            if (scrollOffset < 0) {
+	                this.element.classList.remove(this.downClass);
+	                this.element.classList.add(this.upClass);
+	            } else {
+	                this.element.classList.remove(this.upClass);
+	                this.element.classList.add(this.downClass);
 	            }
 	            this.lastScrollY = currentScrollY;
 	        }
@@ -150,7 +153,13 @@
 	var actionFooter = document.querySelector('.postActionsFooter');
 	// let articleBegin = getPosition(document.querySelector('.main-post')).y;
 	var actionBegin = (0, _viewHelp.getPosition)(actionFooter).y;
-	var immerseActionFooter = new _ImmerseScroller2.default(document.querySelector('.postActionsBar-content'), 0, actionBegin);
+	var immerseActionFooter = new _ImmerseScroller2.default({
+	  element: document.querySelector('.postActionsBar-content'),
+	  end: actionBegin - actionFooter.clientHeight,
+	  inClass: 'postActionsBar-content--affixed',
+	  upClass: 'is-inView',
+	  downClass: 'is-hidden'
+	});
 	immerseActionFooter.init();
 
 /***/ },

@@ -14,6 +14,14 @@ $base-line-height: 1.5;
 
 $spacing-unit:     30px;
 
+$accent-color: #1DE9B6;
+$accent-color-lighter: #64FFDA;
+$accent-color-darker: #00BFA5;
+
+$primary-color: #ee6e73;
+$primary-color-lighter: #FFCDD2;
+$primary-color-darker: #F44336;
+
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #F99;
@@ -23,7 +31,8 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
 //height of the site-header
-$site-header-height: 56px;
+$site-header-height: 256px;
+$site-header-bar-height: 56px;
 
 // Width of the content area
 $content-width:    800px;

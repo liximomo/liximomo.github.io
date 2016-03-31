@@ -1,5 +1,5 @@
 export default class ImmerseScroller {
-    constructor(element, start = 0, end = -1) {
+    constructor() {
         window.requestAnimFrame =  window.requestAnimationFrame || 
             window.mozRequestAnimationFrame || 
             window.webkitRequestAnimationFrame ||
@@ -7,17 +7,15 @@ export default class ImmerseScroller {
             function( callback ) {
                 window.setTimeout(callback, 1000 / 60);
              };
-        this.latestKnownScrollY  = 0;
-        this.lastScrollY = 0;
-        this.delta = 5;
-        this.ticking = false;
-        this.element = element;
-        this.start = start;
-        this.end = end;
+        this.hooks  = [];
     }
 
     init() {
         window.addEventListener('scroll', this.onScroll.bind(this), false);
+    }
+
+    register(anims) {
+        this.hooks.concat(anims);
     }
 
     onScroll() {
@@ -40,12 +38,19 @@ export default class ImmerseScroller {
         if (Math.abs(scrollOffset) <= this.delta) {
             return;
         }
-        if (scrollOffset < 0 && isInRegion) {
-            this.element.classList.remove('is-hidden');
-            this.element.classList.add('is-inView');
+
+        if (isInRegion) {
+            this.element.classList.add(this.inClass);
         } else {
-            this.element.classList.remove('is-inView');
-            this.element.classList.add('is-hidden');
+            this.element.classList.remove(this.inClass);
+        }
+
+        if (scrollOffset < 0) {
+            this.element.classList.remove(this.downClass);
+            this.element.classList.add(this.upClass);
+        } else {
+            this.element.classList.remove(this.upClass);
+            this.element.classList.add(this.downClass);
         }
         this.lastScrollY = currentScrollY;
     }
