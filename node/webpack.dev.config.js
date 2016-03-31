@@ -6,7 +6,7 @@ module.exports = {
     'post': ["./src/post.js"]
   },
   output: {
-    path: __dirname,
+    path: '../js',
     filename: "[name].js",
     publicPath: '/js/'
   },
@@ -24,10 +24,5 @@ module.exports = {
         test: /\.css$/, loader: "style!css" 
       }
     ]
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    })
-  ]
+  }
 };
