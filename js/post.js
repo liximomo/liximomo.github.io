@@ -174,6 +174,33 @@
 
 	var postActionsBar = document.querySelector('#postActionsBar');
 
+	var siteHeaderPH = document.querySelector('.foldHeader--placeholder');
+	var siteHeader = document.querySelector('#foldHeader');
+	var pageTitle = document.querySelector('#foldHeader .title');
+	var contentStartY = siteHeaderPH.clientHeight;
+	var immerseHeader = _ImmerseScroller2.default.createScroller();
+	immerseHeader.register({
+	  animate: function animate(scrollY, offset) {
+	    if (scrollY > 0) {
+	      pageTitle.classList.add('is-active');
+	    } else {
+	      pageTitle.classList.remove('is-active');
+	    }
+	  }
+	});
+
+	//immerseHeader
+	immerseHeader.register({
+	  animate: function animate(scrollY, offset) {
+	    if (scrollY > contentStartY && offset > 0) {
+	      siteHeader.classList.add('is-hidden');
+	    } else {
+	      siteHeader.classList.remove('is-hidden');
+	    }
+	  }
+	});
+
+	immerseHeader.init();
 	// let scroller = ImmerseScroller.createScroller();
 
 	// //immersePostActionsBar

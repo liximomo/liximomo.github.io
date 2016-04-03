@@ -1,17 +1,17 @@
-<footer class="site-footer">
+
   <!-- popover -->
   <div class="popOverContainer" id="sharePopOver" style="display: none;">
     <div class="popOver">
       <ul class="list">
         <li class="list-item">
           <button class="btn btn--icon btn--iconAndLabel">
-            {% include icon.html icon="share" size="21" %}
+            {% include svg-icon.html icon="share" size="21" %}
             <span>ss</span>
           </button>
         </li>
         <li class="list-item">
           <button class="btn btn--icon btn--iconAndLabel">
-            {% include icon.html icon="share" size="21" %}
+            {% include svg-icon.html icon="share" size="21" %}
             <span>ss</span>
           </button>
         </li>
@@ -26,7 +26,7 @@
         <div class="postActions clearfix">
           <div class="pull-right">
             <button class="btn btn--icon" title="share this post on other sites" id="shareBtnOnBar">
-              {% include icon.html icon="share" size="29" %}
+              {% include svg-icon.html icon="share" size="29" %}
             </button>
           </div>
         </div>
@@ -34,44 +34,14 @@
     </div>
   </div>
 
-  <div class="wrapper">
 
-    <div class="row postActionsFooter" id="postActionsFooter">
-      <div class="postActions  clearfix">
-        <div class="pull-right">
-          <button class="btn btn--icon" title="share this post on other sites" id="shareBtn">
-            {% include icon.html icon="share" size="29" %}
-          </button>
-        </div>
+  <div class="row postActionsFooter" id="postActionsFooter">
+    <div class="postActions  clearfix">
+      <div class="pull-right">
+        <button class="btn btn--icon" title="share this post on other sites" id="shareBtn">
+          {% include svg-icon.html icon="share" size="sm" %}
+        </button>
       </div>
     </div>
-
-    <div class="row footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-        </ul>
-      </div>
-      <div class="footer-col footer-col-2">
-        <!--   <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul> -->
-      </div>
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
-    </div>
-
   </div>
-</footer>
+

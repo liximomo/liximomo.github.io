@@ -59,34 +59,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var siteHeaderPH = document.querySelector('.siteHeader--placeholder');
-	var siteHeader = document.querySelector('#siteHeader');
-	var pageTitle = document.querySelector('#pageTitle');
-	var contentStartY = siteHeaderPH.clientHeight;
-	var immerseHeader = _ImmerseScroller2.default.createScroller();
-	immerseHeader.register({
-	  animate: function animate(scrollY, offset) {
-	    if (scrollY > 0) {
-	      pageTitle.classList.add('is-active');
-	    } else {
-	      pageTitle.classList.remove('is-active');
-	    }
-	  }
-	});
-
-	//immerseHeader
-	immerseHeader.register({
-	  animate: function animate(scrollY, offset) {
-	    if (scrollY > contentStartY && offset > 0) {
-	      siteHeader.classList.add('is-hidden');
-	    } else {
-	      siteHeader.classList.remove('is-hidden');
-	    }
-	  }
-	});
-
-	immerseHeader.init();
-
 /***/ },
 /* 2 */
 /***/ function(module, exports) {

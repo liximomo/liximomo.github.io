@@ -12,7 +12,33 @@ let postActionsBeingShowY = postFooterStartY - postFooter.clientHeight - window.
 
 let postActionsBar = document.querySelector('#postActionsBar');
 
+let siteHeaderPH = document.querySelector('.foldHeader--placeholder');
+let siteHeader = document.querySelector('#foldHeader');
+let pageTitle = document.querySelector('#foldHeader .title');
+const contentStartY = siteHeaderPH.clientHeight;
+let immerseHeader = ImmerseScroller.createScroller();
+immerseHeader.register({
+  animate: (scrollY, offset) => {
+    if (scrollY > 0 ) {
+      pageTitle.classList.add('is-active');
+    } else {
+      pageTitle.classList.remove('is-active');
+    }
+  } 
+});
 
+//immerseHeader
+immerseHeader.register({
+  animate: (scrollY, offset) => {
+    if (scrollY > contentStartY && offset > 0) {
+      siteHeader.classList.add('is-hidden');
+    } else {
+      siteHeader.classList.remove('is-hidden');
+    }
+  } 
+});
+
+immerseHeader.init();
 // let scroller = ImmerseScroller.createScroller();
 
 // //immersePostActionsBar

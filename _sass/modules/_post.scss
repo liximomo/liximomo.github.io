@@ -1,9 +1,10 @@
-.post-list {
+.postList {
     margin-left: 0;
     list-style: none;
 
-    > li {
+    > .postList-item:not(:last-child) {
         margin-bottom: $spacing-unit;
+        border-bottom: 1px solid rgba($primary-color-lighter, 0.25);
     }
 }
 

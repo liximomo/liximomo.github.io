@@ -20,6 +20,9 @@ github_username:  liximomo
 exclude:
   - node/
 
+
+permalink: pretty
+
 # Build settings
 markdown: kramdown
 
@@ -38,3 +41,6 @@ defaults:
 # plugin
 gems:
   - jemoji
+
+
+#personal info
