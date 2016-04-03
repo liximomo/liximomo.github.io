@@ -5,14 +5,25 @@ import { getPosition } from './lib/viewHelp';
 let pop = document.querySelector('#sharePopOver');
 new Popover('#shareBtn', pop, 20); 
 new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container')); 
-let actionFooter = document.querySelector('.postActionsFooter');
+let postFooter = document.querySelector('#postActionsFooter');
 // let articleBegin = getPosition(document.querySelector('.main-post')).y;
-let actionBegin = getPosition(actionFooter).y;
-let immerseActionFooter = new ImmerseScroller({
-  element: document.querySelector('.postActionsBar-content'),
-  end: actionBegin - actionFooter.clientHeight,
-  inClass: 'postActionsBar-content--affixed',
-  upClass: 'is-inView',
-  downClass: 'is-hidden'
-});
-immerseActionFooter.init();
+let postFooterStartY = getPosition(postFooter).y;
+let postActionsBeingShowY = postFooterStartY - postFooter.clientHeight - window.innerHeight;
+
+let postActionsBar = document.querySelector('#postActionsBar');
+
+
+// let scroller = ImmerseScroller.createScroller();
+
+// //immersePostActionsBar
+// scroller.register({
+//   animate: (scrollY, offset) => {
+//     if (postActionsBeingShowY < scrollY || offset > 0) {
+//       postActionsBar.classList.add('is-hidden');
+//     } else {
+//       postActionsBar.classList.remove('is-hidden');
+//     }
+//   } 
+// });
+
+// scroller.init();

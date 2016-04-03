@@ -70,6 +70,10 @@
 	            window.setTimeout(callback, 1000 / 60);
 	        };
 	        this.hooks = [];
+
+	        this.latestKnownScrollY = 0;
+	        this.lastScrollY = 0;
+	        this.ticking = false;
 	    }
 
 	    _createClass(ImmerseScroller, [{
@@ -80,7 +84,7 @@
 	    }, {
 	        key: 'register',
 	        value: function register(anims) {
-	            this.hooks.concat(anims);
+	            this.hooks = this.hooks.concat(anims);
 	        }
 	    }, {
 	        key: 'onScroll',
@@ -99,28 +103,35 @@
 	    }, {
 	        key: 'update',
 	        value: function update() {
+
 	            var currentScrollY = this.latestKnownScrollY;
 	            var scrollOffset = currentScrollY - this.lastScrollY;
 	            this.ticking = false;
-	            var isInRegion = currentScrollY >= this.start && (this.end < 0 || currentScrollY <= this.end - window.innerHeight);
-	            if (Math.abs(scrollOffset) <= this.delta) {
-	                return;
-	            }
 
-	            if (isInRegion) {
-	                this.element.classList.add(this.inClass);
-	            } else {
-	                this.element.classList.remove(this.inClass);
-	            }
+	            this.hooks.forEach(function (anim) {
+	                anim.animate(currentScrollY, scrollOffset);
+	            });
 
-	            if (scrollOffset < 0) {
-	                this.element.classList.remove(this.downClass);
-	                this.element.classList.add(this.upClass);
-	            } else {
-	                this.element.classList.remove(this.upClass);
-	                this.element.classList.add(this.downClass);
-	            }
+	            // const isInRegion = currentScrollY >= this.start  && (this.end < 0 || currentScrollY <= (this.end - window.innerHeight) )
+	            // if (Math.abs(scrollOffset) <= this.delta) {
+	            //     return;
+	            // }
+
+	            // if (isInRegion) {
+	            //     this.element.classList.add(this.inClass);
+	            // } else {
+	            //     this.element.classList.remove(this.inClass);
+	            // }
+
+	            // if (scrollOffset < 0) {
+	            //     this.element.classList.remove(this.downClass);
+	            //     this.element.classList.add(this.upClass);
+	            // } else {
+	            //     this.element.classList.remove(this.upClass);
+	            //     this.element.classList.add(this.downClass);
+	            // }
 	            this.lastScrollY = currentScrollY;
+	            console.count('scroll event handled ' + currentScrollY);
 	        }
 	    }]);
 
@@ -128,6 +139,12 @@
 	}();
 
 	exports.default = ImmerseScroller;
+
+
+	ImmerseScroller.createScroller = function () {
+	    var instance = ImmerseScroller._instance ? ImmerseScroller._instance : new ImmerseScroller();
+	    return instance;
+	};
 
 /***/ },
 /* 3 */
@@ -150,17 +167,27 @@
 	var pop = document.querySelector('#sharePopOver');
 	new _Popover2.default('#shareBtn', pop, 20);
 	new _Popover2.default('#shareBtnOnBar', pop, 20, document.querySelector('.postActionsBar-container'));
-	var actionFooter = document.querySelector('.postActionsFooter');
+	var postFooter = document.querySelector('#postActionsFooter');
 	// let articleBegin = getPosition(document.querySelector('.main-post')).y;
-	var actionBegin = (0, _viewHelp.getPosition)(actionFooter).y;
-	var immerseActionFooter = new _ImmerseScroller2.default({
-	  element: document.querySelector('.postActionsBar-content'),
-	  end: actionBegin - actionFooter.clientHeight,
-	  inClass: 'postActionsBar-content--affixed',
-	  upClass: 'is-inView',
-	  downClass: 'is-hidden'
-	});
-	immerseActionFooter.init();
+	var postFooterStartY = (0, _viewHelp.getPosition)(postFooter).y;
+	var postActionsBeingShowY = postFooterStartY - postFooter.clientHeight - window.innerHeight;
+
+	var postActionsBar = document.querySelector('#postActionsBar');
+
+	// let scroller = ImmerseScroller.createScroller();
+
+	// //immersePostActionsBar
+	// scroller.register({
+	//   animate: (scrollY, offset) => {
+	//     if (postActionsBeingShowY < scrollY || offset > 0) {
+	//       postActionsBar.classList.add('is-hidden');
+	//     } else {
+	//       postActionsBar.classList.remove('is-hidden');
+	//     }
+	//   }
+	// });
+
+	// scroller.init();
 
 /***/ },
 /* 4 */

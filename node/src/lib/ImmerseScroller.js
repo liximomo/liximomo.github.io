@@ -1,4 +1,5 @@
 export default class ImmerseScroller {
+
     constructor() {
         window.requestAnimFrame =  window.requestAnimationFrame || 
             window.mozRequestAnimationFrame || 
@@ -8,6 +9,10 @@ export default class ImmerseScroller {
                 window.setTimeout(callback, 1000 / 60);
              };
         this.hooks  = [];
+
+        this.latestKnownScrollY = 0;
+        this.lastScrollY = 0;
+        this.ticking = false;
     }
 
     init() {
@@ -15,7 +20,7 @@ export default class ImmerseScroller {
     }
 
     register(anims) {
-        this.hooks.concat(anims);
+        this.hooks = this.hooks.concat(anims);
     }
 
     onScroll() {
@@ -31,27 +36,42 @@ export default class ImmerseScroller {
     }
 
     update() {
+
         let currentScrollY = this.latestKnownScrollY;
         let scrollOffset = currentScrollY - this.lastScrollY;
         this.ticking = false;
-        const isInRegion = currentScrollY >= this.start  && (this.end < 0 || currentScrollY <= (this.end - window.innerHeight) )
-        if (Math.abs(scrollOffset) <= this.delta) {
-            return;
-        }
 
-        if (isInRegion) {
-            this.element.classList.add(this.inClass);
-        } else {
-            this.element.classList.remove(this.inClass);
-        }
+        this.hooks.forEach(anim => {
+            anim.animate(currentScrollY, scrollOffset);
+        });
 
-        if (scrollOffset < 0) {
-            this.element.classList.remove(this.downClass);
-            this.element.classList.add(this.upClass);
-        } else {
-            this.element.classList.remove(this.upClass);
-            this.element.classList.add(this.downClass);
-        }
+        
+        // const isInRegion = currentScrollY >= this.start  && (this.end < 0 || currentScrollY <= (this.end - window.innerHeight) )
+        // if (Math.abs(scrollOffset) <= this.delta) {
+        //     return;
+        // }
+
+        // if (isInRegion) {
+        //     this.element.classList.add(this.inClass);
+        // } else {
+        //     this.element.classList.remove(this.inClass);
+        // }
+
+        // if (scrollOffset < 0) {
+        //     this.element.classList.remove(this.downClass);
+        //     this.element.classList.add(this.upClass);
+        // } else {
+        //     this.element.classList.remove(this.upClass);
+        //     this.element.classList.add(this.downClass);
+        // }
         this.lastScrollY = currentScrollY;
+        console.count('scroll event handled ' + currentScrollY);
     }
+}
+
+ImmerseScroller.createScroller = () => {
+    const instance = ImmerseScroller._instance 
+        ? ImmerseScroller._instance 
+        : new ImmerseScroller();
+    return instance;
 }

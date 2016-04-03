@@ -1,12 +1,12 @@
-<header class="site-header site-header--placeholder"></header>
-<header class="site-header site-header--affixed is-inView" id="site-header">
-
-  <div class="wrapper">
-    <div class="page-title" >
-       <span >{{ site.title }}</span>
-    </div>   
+<header class="siteHeader siteHeader--placeholder"></header>
+<header class="siteHeader">
+  <div class="siteHeader siteHeader-bar siteHeader-bar--affixed" id="siteHeader">
+    <div class="wrapper">
+      <div id="pageTitle" >
+         <span >{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</span>
+      </div>   
+    </div>
   </div>
-
 </header>
 
 <!-- <nav class="site-nav">

@@ -59,15 +59,33 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var headBar = document.querySelector('#site-header');
-	// let immerseHeader = new ImmerseScroller({
-	//   element: headBar,
-	//   bedin: headBar - headBar.clientHeight,
-	//   inClass: 'site-header--affixed',
-	//   upClass: 'is-inView',
-	//   downClass: 'is-hidden'
-	// });
-	// immerseHeader.init();
+	var siteHeaderPH = document.querySelector('.siteHeader--placeholder');
+	var siteHeader = document.querySelector('#siteHeader');
+	var pageTitle = document.querySelector('#pageTitle');
+	var contentStartY = siteHeaderPH.clientHeight;
+	var immerseHeader = _ImmerseScroller2.default.createScroller();
+	immerseHeader.register({
+	  animate: function animate(scrollY, offset) {
+	    if (scrollY > 0) {
+	      pageTitle.classList.add('is-active');
+	    } else {
+	      pageTitle.classList.remove('is-active');
+	    }
+	  }
+	});
+
+	//immerseHeader
+	immerseHeader.register({
+	  animate: function animate(scrollY, offset) {
+	    if (scrollY > contentStartY && offset > 0) {
+	      siteHeader.classList.add('is-hidden');
+	    } else {
+	      siteHeader.classList.remove('is-hidden');
+	    }
+	  }
+	});
+
+	immerseHeader.init();
 
 /***/ },
 /* 2 */
@@ -91,6 +109,10 @@
 	            window.setTimeout(callback, 1000 / 60);
 	        };
 	        this.hooks = [];
+
+	        this.latestKnownScrollY = 0;
+	        this.lastScrollY = 0;
+	        this.ticking = false;
 	    }
 
 	    _createClass(ImmerseScroller, [{
@@ -101,7 +123,7 @@
 	    }, {
 	        key: 'register',
 	        value: function register(anims) {
-	            this.hooks.concat(anims);
+	            this.hooks = this.hooks.concat(anims);
 	        }
 	    }, {
 	        key: 'onScroll',
@@ -120,28 +142,35 @@
 	    }, {
 	        key: 'update',
 	        value: function update() {
+
 	            var currentScrollY = this.latestKnownScrollY;
 	            var scrollOffset = currentScrollY - this.lastScrollY;
 	            this.ticking = false;
-	            var isInRegion = currentScrollY >= this.start && (this.end < 0 || currentScrollY <= this.end - window.innerHeight);
-	            if (Math.abs(scrollOffset) <= this.delta) {
-	                return;
-	            }
 
-	            if (isInRegion) {
-	                this.element.classList.add(this.inClass);
-	            } else {
-	                this.element.classList.remove(this.inClass);
-	            }
+	            this.hooks.forEach(function (anim) {
+	                anim.animate(currentScrollY, scrollOffset);
+	            });
 
-	            if (scrollOffset < 0) {
-	                this.element.classList.remove(this.downClass);
-	                this.element.classList.add(this.upClass);
-	            } else {
-	                this.element.classList.remove(this.upClass);
-	                this.element.classList.add(this.downClass);
-	            }
+	            // const isInRegion = currentScrollY >= this.start  && (this.end < 0 || currentScrollY <= (this.end - window.innerHeight) )
+	            // if (Math.abs(scrollOffset) <= this.delta) {
+	            //     return;
+	            // }
+
+	            // if (isInRegion) {
+	            //     this.element.classList.add(this.inClass);
+	            // } else {
+	            //     this.element.classList.remove(this.inClass);
+	            // }
+
+	            // if (scrollOffset < 0) {
+	            //     this.element.classList.remove(this.downClass);
+	            //     this.element.classList.add(this.upClass);
+	            // } else {
+	            //     this.element.classList.remove(this.upClass);
+	            //     this.element.classList.add(this.downClass);
+	            // }
 	            this.lastScrollY = currentScrollY;
+	            console.count('scroll event handled ' + currentScrollY);
 	        }
 	    }]);
 
@@ -149,6 +178,12 @@
 	}();
 
 	exports.default = ImmerseScroller;
+
+
+	ImmerseScroller.createScroller = function () {
+	    var instance = ImmerseScroller._instance ? ImmerseScroller._instance : new ImmerseScroller();
+	    return instance;
+	};
 
 /***/ }
 /******/ ]);
