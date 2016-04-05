@@ -2,18 +2,19 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">{{ site.title }}</h2>
+    <h2 class="footer-heading hide">{{ site.title }}</h2>
 
     <div class="row footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
-          <li>{{ site.title }}</li>
+          <li>Contact</li>
           <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         </ul>
       </div>
 
       <div class="footer-col footer-col-2">
          <ul class="social-media-list">
+          <li>Github</li>
         {% for social in site.data.socials %}
           <li>
             <a href="{{ social.link }}">
@@ -23,10 +24,6 @@
           </li>
         {% endfor %}
         </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
       </div>
     </div>
 
