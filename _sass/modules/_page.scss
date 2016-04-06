@@ -17,9 +17,9 @@
       background: $bkColor;
       height: $size;
       width: $size;
-      left: calc(50% - #{$size}/2);
+      @include calc(left, "50% - #{$size}/2");
       bottom: - ($size/2*1.41 - $padding/2);
-      transform: rotate(45deg);
+       @include transform(rotate(45deg));
       box-shadow: 1px 1px 1px -1px rgba(0,0,0,.8);
     }
 }

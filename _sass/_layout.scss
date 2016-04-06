@@ -52,16 +52,14 @@
  * Wrapper
  */
 .wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+    @include calc(max-width, "#{$content-width} - (#{$spacing-unit} * 2)");
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     @extend %horizontal-center;
     @extend %clearfix;
 
     @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        @include calc(max-width, "#{$content-width} - (#{$spacing-unit})");
         padding-right: $spacing-unit / 2;
         padding-left: $spacing-unit / 2;
     }
@@ -75,7 +73,8 @@
     width: 100%;
     // Positioning context for the mobile navigation icon
     position: relative;
-    transition: .3s transform;
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
     height: $site-header-bar-height;
     border-bottom: 1px solid #FFCDD2;
 }
@@ -88,21 +87,19 @@
     &--affixed {
         position: fixed;
         top: 0;
-        transform: translate3D(0, 0, 0);
+        @include transform(translate3D(0, 0, 0));
 
         &.is-hidden{
-            transform: translate3D(0, -100%, 0);
+            @include transform(translate3D(0, -100%, 0));
         }
     }
 }
 
 .siteHeader-bar .wrapper {
-    max-width: -webkit-calc(#{$content-width + 300px} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width + 300px} - (#{$spacing-unit} * 2));
+    @include calc(max-width, "#{$content-width + 300px} - (#{$spacing-unit} * 2)");
 
     @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+        @include  calc(max-width, "#{$content-width} - (#{$spacing-unit})");
     }
 }
 
@@ -115,6 +112,8 @@
     letter-spacing: -1px;
     margin-bottom: 0;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .siteHeader-bar .page-link {
@@ -171,9 +170,10 @@
         .trigger {
             clear: both;
             display: none;
-            transform: scaleY(0);
-            transform-origin: right top ;
-            transition: .1s transform, .1s opacity;
+            @include transform(scaleY(0));
+            @include transform-origin(right top);
+            @include transition-property(transform, opacity);
+            @include transition-duration(0.1s);
         }
 
         &:hover {
@@ -181,7 +181,7 @@
 
             .trigger {
                 display: block;
-                transform: scaleY(1);
+                @include transform(scaleY(1));
                 display: block;
                 padding-bottom: 5px;
             }
@@ -227,33 +227,59 @@
     width: 100%;
     height: $site-header-bar-height;
     background: inherit;
-    transition: .3s transform;
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
 
     &--affixed {
         position: fixed;
         top: 0;
-        transform: translate3D(0, 0, 0);
+        @include transform(translate3D(0, 0, 0));
 
         &.is-hidden{
-            transform: translate3D(0, -100%, 0);
+            @include transform(translate3D(0, -100%, 0));
         }
     }
 }
 
 .foldHeader .title {
     font-size: $base-font-size*3;
-    transition: transform .2s, font-size .2s;
-    transform: translate3D(0, $site-header-height*0.65, 0);
+    @include transition-property(transform, font-size);
+    @include transition-duration(0.2s);
+    @include transform(translate3D(0, $site-header-height*0.65, 0));
 
     @include media-query($on-palm) {
-        transform: translate3D(0, $site-header-height*0.2, 0);
+        @include transform(translate3D(0, $site-header-height*0.2, 0));
         font-size: $base-font-size*2;
     }
 
     &.is-active {
         font-size: $base-font-size*1.5;
-        transform: translate3D(0, 0, 0) ;
+        @include transform(translate3D(0, 0, 0));
     }
+}
+
+.backBtn {
+    position: absolute;
+    top: 256-28px;
+    left: 150px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+    background: $accent-color;
+        
+    @include media-query($content-width + 265*2) {
+           position: static;
+           box-shadow: none;
+           background: none;
+    }
+
+    &.is-active {
+        position: static;
+        box-shadow: none;
+        background: none;
+    }
+    
 }
 
 .postActionsBar {
@@ -271,7 +297,8 @@
 
 .postActionsFooter {
     
-    transition: .3s transform;
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
 
     &--affixed {
         background: white;
@@ -281,7 +308,7 @@
         bottom: 0;
         left: $spacing-unit;
         right: $spacing-unit;
-        transform: translate3D(0, 0, 0);
+        @include transform(translate3D(0, 0, 0));
 
 
         @include media-query($on-palm) {
@@ -290,7 +317,7 @@
         }
 
         &.is-hidden{
-             transform: translate3D(0, 100%, 0);
+             @include transform(translate3D(0, 100%, 0));
         }
     }
 }
@@ -329,14 +356,12 @@
 
 .footer-col-1 {
     padding-right: $spacing-unit / 2;
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
+    @include calc(width, "35% - (#{$spacing-unit} / 2)");
 }
 
 .footer-col-2 {
     padding-right: $spacing-unit / 2;
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
+    @include calc(width, "20% - (#{$spacing-unit} / 2)");
 }
 
 
@@ -344,16 +369,14 @@
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
+        @include calc(width, "50% - (#{$spacing-unit} / 2)");
     }
 }
 
 @include media-query($on-palm) {
     .footer-col {
         float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
+       @include calc(width, "100% - (#{$spacing-unit} / 2)");
     }
 }
 

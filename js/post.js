@@ -165,8 +165,8 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var pop = document.querySelector('#sharePopOver');
-	new _Popover2.default('#shareBtn', pop, 20);
-	new _Popover2.default('#shareBtnOnBar', pop, 20, document.querySelector('.postActionsBar-container'));
+	// new Popover('#shareBtn', pop, 20);
+	// new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container'));
 	var postFooter = document.querySelector('#postActionsFooter');
 	// let articleBegin = getPosition(document.querySelector('.main-post')).y;
 	var postFooterStartY = (0, _viewHelp.getPosition)(postFooter).y;
@@ -181,7 +181,7 @@
 	var immerseHeader = _ImmerseScroller2.default.createScroller();
 	immerseHeader.register({
 	  animate: function animate(scrollY, offset) {
-	    if (scrollY > 0) {
+	    if (scrollY > 3) {
 	      pageTitle.classList.add('is-active');
 	    } else {
 	      pageTitle.classList.remove('is-active');
@@ -200,6 +200,17 @@
 	  }
 	});
 
+	var backBtn = document.querySelector('#backBtn');
+	//backBtn
+	immerseHeader.register({
+	  animate: function animate(scrollY, offset) {
+	    if (scrollY > 0) {
+	      backBtn.classList.add('is-active');
+	    } else {
+	      backBtn.classList.remove('is-active');
+	    }
+	  }
+	});
 	immerseHeader.init();
 	// let scroller = ImmerseScroller.createScroller();
 

@@ -3,8 +3,8 @@ import ImmerseScroller from './lib/ImmerseScroller';
 import { getPosition } from './lib/viewHelp';
 
 let pop = document.querySelector('#sharePopOver');
-new Popover('#shareBtn', pop, 20); 
-new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container')); 
+// new Popover('#shareBtn', pop, 20); 
+// new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container')); 
 let postFooter = document.querySelector('#postActionsFooter');
 // let articleBegin = getPosition(document.querySelector('.main-post')).y;
 let postFooterStartY = getPosition(postFooter).y;
@@ -19,7 +19,7 @@ const contentStartY = siteHeaderPH.clientHeight;
 let immerseHeader = ImmerseScroller.createScroller();
 immerseHeader.register({
   animate: (scrollY, offset) => {
-    if (scrollY > 0 ) {
+    if (scrollY > 3 ) {
       pageTitle.classList.add('is-active');
     } else {
       pageTitle.classList.remove('is-active');
@@ -38,6 +38,17 @@ immerseHeader.register({
   } 
 });
 
+let backBtn = document.querySelector('#backBtn');
+//backBtn
+immerseHeader.register({
+  animate: (scrollY, offset) => {
+    if (scrollY > 0 ) {
+      backBtn.classList.add('is-active');
+    } else {
+      backBtn.classList.remove('is-active');
+    }
+  } 
+});
 immerseHeader.init();
 // let scroller = ImmerseScroller.createScroller();
 
