@@ -229,7 +229,8 @@
     background: inherit;
     @include transition-property(transform);
     @include transition-duration(0.3s);
-
+    @include transition-timing-function(ease-out);
+    
     &--affixed {
         position: fixed;
         top: 0;
@@ -246,6 +247,7 @@
     @include transition-property(transform, font-size);
     @include transition-duration(0.2s);
     @include transform(translate3D(0, $site-header-height*0.65, 0));
+    @include transition-timing-function(ease-out);
 
     @include media-query($on-palm) {
         @include transform(translate3D(0, $site-header-height*0.2, 0));
@@ -259,27 +261,32 @@
 }
 
 .backBtn {
-    position: absolute;
-    top: 256-28px;
-    left: 150px;
+    @include transform(translate3D(150px, #{256-28px}, 0));
     width: 56px;
     height: 56px;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
-    background: $accent-color;
-        
+    background: #ab91d8;
+    @include transition-property(transform);
+    @include transition-duration(0.2s);
+    @include transition-timing-function(ease-out);
+
     @include media-query($content-width + 265*2) {
-           position: static;
            box-shadow: none;
            background: none;
+           @include transform(translate3D(0, 0, 0));
     }
 
     &.is-active {
-        position: static;
         box-shadow: none;
         background: none;
+        @include transform(translate3D(0, 0, 0));
     }
     
+    &:hover {
+
+        box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32);
+    }
 }
 
 .postActionsBar {
