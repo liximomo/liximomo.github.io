@@ -272,9 +272,9 @@
     @include transition-timing-function(ease-out);
 
     @include media-query($content-width + 265*2) {
-           box-shadow: none;
-           background: none;
-           @include transform(translate3D(0, 0, 0));
+        box-shadow: none;
+        background: none;
+        @include transform(translate3D(0, 0, 0));
     }
 
     &.is-active {
@@ -340,6 +340,7 @@
     position: relative;
     top: -60px;
     height: 60px; 
+    background: $background-color;
 }
 
 /**
@@ -408,6 +409,7 @@
 .page-content {
     padding: $spacing-unit 0;
     padding-top: $spacing-unit;
+    background: $background-color;
 }
 
 .page-heading {
