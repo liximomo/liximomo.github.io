@@ -201,6 +201,7 @@
 	});
 
 	var backBtn = document.querySelector('#backBtn');
+
 	//backBtn
 	immerseHeader.register({
 	  animate: function animate(scrollY, offset) {

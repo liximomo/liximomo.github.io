@@ -39,6 +39,7 @@ immerseHeader.register({
 });
 
 let backBtn = document.querySelector('#backBtn');
+
 //backBtn
 immerseHeader.register({
   animate: (scrollY, offset) => {
