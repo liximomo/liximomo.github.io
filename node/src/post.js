@@ -19,7 +19,7 @@ const contentStartY = siteHeaderPH.clientHeight;
 let immerseHeader = ImmerseScroller.createScroller();
 immerseHeader.register({
   animate: (scrollY, offset) => {
-    if (scrollY > 3 ) {
+    if (scrollY > 20) {
       pageTitle.classList.add('is-active');
     } else {
       pageTitle.classList.remove('is-active');
@@ -38,18 +38,21 @@ immerseHeader.register({
   } 
 });
 
-let backBtn = document.querySelector('#backBtn');
-
-//backBtn
+let comment = document.querySelector('#disqus_thread');
+let commentOffsetY = getPosition(comment).y;
+let scrollTrigger = commentOffsetY - window.innerHeight;
+let isCommentLoad = false;
+//load comment
 immerseHeader.register({
   animate: (scrollY, offset) => {
-    if (scrollY > 0 ) {
-      backBtn.classList.add('is-active');
-    } else {
-      backBtn.classList.remove('is-active');
-    }
+    if (!isCommentLoad && scrollY > scrollTrigger) {
+      console.log('loading comment');
+      loadComment();
+      isCommentLoad = true;
+    } 
   } 
 });
+
 immerseHeader.init();
 // let scroller = ImmerseScroller.createScroller();
 
@@ -65,3 +68,12 @@ immerseHeader.init();
 // });
 
 // scroller.init();
+
+function loadComment() {
+  var d = document, s = d.createElement('script');
+
+  s.src = '//l-x.disqus.com/embed.js';
+
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+}
