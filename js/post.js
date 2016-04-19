@@ -66,15 +66,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var pop = document.querySelector('#sharePopOver');
-	// new Popover('#shareBtn', pop, 20);
-	// new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container'));
-	var postFooter = document.querySelector('#postActionsFooter');
-	// let articleBegin = getPosition(document.querySelector('.main-post')).y;
-	var postFooterStartY = (0, _viewHelp.getPosition)(postFooter).y;
-	var postActionsBeingShowY = postFooterStartY - postFooter.clientHeight - window.innerHeight;
+	// let pop = document.querySelector('#sharePopOver');
+	// // new Popover('#shareBtn', pop, 20);
+	// // new Popover('#shareBtnOnBar', pop , 20, document.querySelector('.postActionsBar-container'));
+	// let postFooter = document.querySelector('#postActionsFooter');
+	// // let articleBegin = getPosition(document.querySelector('.main-post')).y;
+	// let postFooterStartY = getPosition(postFooter).y;
+	// let postActionsBeingShowY = postFooterStartY - postFooter.clientHeight - window.innerHeight;
 
-	var postActionsBar = document.querySelector('#postActionsBar');
+	// let postActionsBar = document.querySelector('#postActionsBar');
 
 	var siteHeaderPH = document.querySelector('.foldHeader--placeholder');
 	var siteHeader = document.querySelector('#foldHeader');
