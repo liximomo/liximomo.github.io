@@ -181,6 +181,7 @@
 	var immerseHeader = _ImmerseScroller2.default.createScroller();
 	immerseHeader.register({
 	  animate: function animate(scrollY, offset) {
+	    console.log('scrolling');
 	    if (scrollY > 3) {
 	      pageTitle.classList.add('is-active');
 	    } else {

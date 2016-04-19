@@ -19,6 +19,7 @@ const contentStartY = siteHeaderPH.clientHeight;
 let immerseHeader = ImmerseScroller.createScroller();
 immerseHeader.register({
   animate: (scrollY, offset) => {
+    console.log('scrolling');
     if (scrollY > 3 ) {
       pageTitle.classList.add('is-active');
     } else {
