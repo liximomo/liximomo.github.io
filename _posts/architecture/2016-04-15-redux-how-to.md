@@ -80,6 +80,7 @@ let action = {
 ```
 
 ### Reducer
+
 我们用 action 定义了发生了什么， 接下来当然是怎么处理 action，这就是 reducer。
 
 Redux 定义的 Reducer 接口是这样子的 
@@ -113,6 +114,7 @@ function todoApp(state = [], action) {
   }
 }
 ```
+
 ### Store
 
 Store 是一个持有应用程序 state 的对像，定义如下
