@@ -11,7 +11,6 @@ export default class ImmerseScroller {
         this.hooks  = [];
 
         this.latestKnownScrollY = 0;
-        this.lastScrollY = 0;
         this.ticking = false;
     }
 
@@ -20,7 +19,9 @@ export default class ImmerseScroller {
     }
 
     register(anims) {
-        this.hooks = this.hooks.concat(anims);
+        let animsArray = [].concat(anims);
+        this.hooks = this.hooks.concat(animsArray);
+        animsArray.forEach(anim => anim.lastScrollY = window.scrollY);
     }
 
     onScroll() {
@@ -38,11 +39,13 @@ export default class ImmerseScroller {
     update() {
 
         let currentScrollY = this.latestKnownScrollY;
-        let scrollOffset = currentScrollY - this.lastScrollY;
         this.ticking = false;
 
         this.hooks.forEach(anim => {
-            anim.animate(currentScrollY, scrollOffset);
+            let scrollOffset = currentScrollY - anim.lastScrollY;
+            if(anim.animate(currentScrollY, scrollOffset)) {
+                anim.lastScrollY = currentScrollY;
+            }
         });
 
         
@@ -64,7 +67,6 @@ export default class ImmerseScroller {
         //     this.element.classList.remove(this.upClass);
         //     this.element.classList.add(this.downClass);
         // }
-        this.lastScrollY = currentScrollY;
     }
 }
 

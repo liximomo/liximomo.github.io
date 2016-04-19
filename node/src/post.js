@@ -12,30 +12,44 @@ import { getPosition } from './lib/viewHelp';
 
 // let postActionsBar = document.querySelector('#postActionsBar');
 
-let siteHeaderPH = document.querySelector('.foldHeader--placeholder');
-let siteHeader = document.querySelector('#foldHeader');
-let pageTitle = document.querySelector('#foldHeader .title');
-const contentStartY = siteHeaderPH.clientHeight;
+let siteHeader = document.querySelector('#siteHeader');
+let headerBar = document.querySelector('#headerBar');
+let pageBarTitle = document.querySelector('#barTitle');
+let pageTitle = document.querySelector('#hugeTitle');
+const contentStartY = siteHeader.clientHeight;
 let immerseHeader = ImmerseScroller.createScroller();
 immerseHeader.register({
-  animate: (scrollY, offset) => {
-    console.log('scrolling');
-    if (scrollY > 20) {
+  animate: (scrollY) => {
+    if (window.scrollY > 0) {
+      headerBar.classList.add('is-active');
+      pageBarTitle.classList.add('is-active');
       pageTitle.classList.add('is-active');
     } else {
+      headerBar.classList.remove('is-active');
+      pageBarTitle.classList.remove('is-active');
       pageTitle.classList.remove('is-active');
     }
   } 
 });
 
+
 //immerseHeader
 immerseHeader.register({
   animate: (scrollY, offset) => {
-    if (scrollY > contentStartY && offset > 0) {
-      siteHeader.classList.add('is-hidden');
-    } else {
-      siteHeader.classList.remove('is-hidden');
+    if (scrollY < contentStartY ) {
+      headerBar.classList.remove('is-hidden');
+      return true;
     }
+
+    if (offset > 0) {
+      headerBar.classList.add('is-hidden');
+    } else {
+      if (offset > -200) {
+        return false;
+      }
+      headerBar.classList.remove('is-hidden');
+    }
+    return true;
   } 
 });
 
