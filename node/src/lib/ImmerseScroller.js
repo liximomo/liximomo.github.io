@@ -65,7 +65,6 @@ export default class ImmerseScroller {
         //     this.element.classList.add(this.downClass);
         // }
         this.lastScrollY = currentScrollY;
-        console.count('scroll event handled ' + currentScrollY);
     }
 }
 

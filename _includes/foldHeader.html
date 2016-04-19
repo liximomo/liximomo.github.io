@@ -1,11 +1,9 @@
 <header class="foldHeader foldHeader--placeholder"></header>
 <header class="foldHeader">
   <div class="foldHeader-bar foldHeader-bar--affixed" id="foldHeader">
-    <a href="/"  class="pull-left"><button id="backBtn" class="btn btn--icon backBtn" aria-label="home" title="Back to home">{% include svg-icon.html icon="arrow_back" size="md" %}</button></a>
-    <div class="wrapper">
-      <div class="title" >
-         <span >{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</span>
-      </div>   
-    </div>
+    <a href="/"  class=""><button id="backBtn" class="btn btn--icon backBtn" aria-label="home" title="Back to home">{% include svg-icon.html icon="arrow_back" size="sm" %}</button></a>
+    <div class="title" >
+      <span >{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</span>
+    </div>  
   </div>
 </header>

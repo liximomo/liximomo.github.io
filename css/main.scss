@@ -32,17 +32,46 @@ $grey-color-dark:  darken($grey-color, 25%);
 
 //height of the site-header
 $site-header-height: 256px;
-$site-header-bar-height: 56px;
+$site-header-bar-height: 64px;
 
 // Width of the content area
 $content-width:    800px;
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-phone:          400px;
+$on-pad:        800px;
 
 
+@mixin horizontal-center() {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin clearfix() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+@mixin wrapper() {
+    @include calc(max-width, "#{$content-width} - (#{$spacing-unit} * 2)");
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+    @include horizontal-center;
+} 
+
+@mixin wrapper-pad() {
+    @include media-query($content-width) {
+        @include calc(max-width, "#{$content-width} - #{$spacing-unit} - 400px");
+        padding-right: $spacing-unit / 2;
+        padding-left: $spacing-unit / 2;
+    }
+}
+    
 
 // Use media queries like this:
-// @include media-query($on-palm) {
+// @include media-query($on-phone) {
 //     .wrapper {
 //         padding-right: $spacing-unit / 2;
 //         padding-left: $spacing-unit / 2;
