@@ -128,7 +128,7 @@ type Store = {
 
 它是这样工作的
 
-[!store workflow][store]
+![store workflow][store]
 
 ## 怎么使用？
 了解了redux的基本概念后，我们可以开始实践了。
