@@ -24,7 +24,7 @@ Redux 帮助我们写出保持行为一致性的应用程序，易于测试，�
 
 State 描述一个应用程序的全部状态，当我们设计应用程序时，因为是描述全部状态，所以一个应用程序的 state 对象只有一个形状(shape)。
 
-所有需要控制的状态都应设计到 state 对象中。一个 Todo App 的状态开起来会是这个样子
+所有需要控制的状态都应设计到 state 对象中。一个 Todo App 的状态看起来是这个样子
 
 ```js
 {
@@ -48,8 +48,8 @@ State 描述一个应用程序的全部状态，当我们设计应用程序时�
   ]
 }
 ```
-嗯，按照上述定义，我们 Todo App 看起来除了显示 todo 列表，没有其他功能呢， 我们想添加一个搜索功能。这时候 state 看起来是这个样子的
 
+在上述定义的基础上，我们想添加一个搜索功能。这时候 state 看起来是这个样子的
 
 ```js
 state = {
@@ -59,8 +59,6 @@ state = {
   ]
 }
 ```
-
-当然我们可以不把 `searchText` 设计到 state 对像中， 这样用户每次进入应用都要重新搜索， 应用无法恢复到用户上次搜索的状态。
 
 ### Action
 
@@ -81,7 +79,7 @@ let action = {
 
 ### Reducer
 
-我们用 action 定义了发生了什么， 接下来当然是怎么处理 action，这就是 reducer。
+我们已经用 action 定义发生了什么， 下一步当然是如何处理 action，这就是 reducer。
 
 Redux 定义的 Reducer 接口是这样子的 
 
@@ -91,9 +89,9 @@ type Reducer<S, A> = (state: S, action: A) => S
 
 Reducer 接收两个参数，第一个参数是当前状态，而第二参数是 action, 返回更新后的状态。
 
-> Reducer 一定要定义为[纯函数][pure function]，不要修改 state 对象，而总是返回一个新的 state 。
+> Reducer 一定要定义为[纯函数][pure function]，我们应该返回一个包含新 state 的对象来替代对原对象的直接修改。
 >
-> 总返回新的 state 使 redux 通过比较对象引用检测改变，而不用像 flux 一样在每个变化点用代码通知变化。
+> 返回新的 state 对象替代修改原对象使 redux 通过比较对象引用检测改变，而不用像 flux 一样在每个变化点用代码通知变化。
 
 现在让我们定义一个 reducer 来处理 action。
 
@@ -117,7 +115,7 @@ function todoApp(state = [], action) {
 
 ### Store
 
-Store 是一个持有应用程序 state 的对像，定义如下
+Store 是管理应用程序 state 的容器，连接之前介绍的各个部分，定义如下
 
 ```js
 type Store = {
