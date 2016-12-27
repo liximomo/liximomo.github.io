@@ -1,5 +1,6 @@
 ---
 layout: default
+css: ["main.css"]
 ---
 
 <div class="home">
@@ -13,11 +14,11 @@ layout: default
             <h2>
               <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
             </h2>
-            <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}" >{{ post.date |  date: "%F %r"  }}</time>{% if post.author %} • <span>{{ post.author }}</span>{% endif %}</p>
+            <p class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}" >{% include helper/date date=post.date %}</time>{% if post.author %} • <span>{{ post.author }}</span>{% endif %}</p>
           </header>
 
           <div class="post-content">
-            {{ post.excerpt }}
+            {{ post.excerpt | remove: '<p>' | remove: '</p>' }}
           </div>
           <footer>
             <span class="post-eop"></span>

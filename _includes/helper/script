@@ -1,0 +1,5 @@
+{% if jekyll.environment == "development" %}
+  <script type="text/javascript" src="{{ include.src | prepend: '//localhost:4001/js/' }}"></script>
+{% else %}
+  <script type="text/javascript" src="{{ include.src | prepend: '/js/' | relative_url }}"></script>
+{% endif %}

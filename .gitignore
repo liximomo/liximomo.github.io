@@ -4,3 +4,9 @@ _site
 node_modules/
 *.sublime-project
 *.sublime-workspace
+
+# MAC 
+.DS_Store
+
+# workspace
+.vscode/

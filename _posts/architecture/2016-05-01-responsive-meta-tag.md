@@ -1,11 +1,12 @@
 ---
-layout: post
 title:  "响应式 Meta Tag"
 date:   2016-05-01 10:23:33 +0800
 tags:  meta, viewport, mobile
-excerpt: >
-  为什么需要为移动设备使用 `<meta name="viewport" content="width=device-width, initial-scale=1" >`，逻辑像素和物理像素到底是什么，他们是什么样的关系，设备像素比率又是什么？
 ---
+
+为什么需要为移动设备使用 `<meta name="viewport" content="width=device-width, initial-scale=1" >`，逻辑像素和物理像素到底是什么，他们是什么样的关系，设备像素比率又是什么？
+
+<!--more-->
 
 ## 三块屏幕
 

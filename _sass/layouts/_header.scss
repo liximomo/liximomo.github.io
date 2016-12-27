@@ -1,0 +1,129 @@
+.siteHeader {
+    width: 100%;
+    // Positioning context for the mobile navigation icon
+    position: relative;
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
+    height: $site-header-bar-height;
+    border-bottom: 1px solid #FFCDD2;
+}
+
+.siteHeader-bar {
+    width: 100%;
+    background: $primary-color;
+    height: $site-header-bar-height;
+
+    &--affixed {
+        position: fixed;
+        top: 0;
+        @include transform(translate3D(0, 0, 0));
+
+        &.is-hidden{
+            @include transform(translate3D(0, -100%, 0));
+        }
+    }
+}
+
+.siteHeader-bar .wrapper {
+    @include calc(max-width, "#{$content-width + 300px} - (#{$spacing-unit} * 2)");
+
+    @include media-query($on-pad) {
+        @include  calc(max-width, "#{$content-width} - (#{$spacing-unit})");
+    }
+}
+
+
+.title {
+    color: white;
+    font-size: $base-font-size*1.5;
+    font-weight: 300;
+    line-height: $site-header-bar-height;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.siteHeader-bar .page-link {
+    color: white;
+    line-height: $base-line-height;
+}
+
+/**
+ * site nav
+ */
+.site-nav {
+    float: right;
+    line-height: $site-header-bar-height;
+
+    .menu-icon {
+        display: none;
+    }
+
+    .page-link {
+    
+        // Gaps between nav items, but not on the last one
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+
+    @include media-query($on-phone) {
+        position: absolute;
+        top: 9px;
+        right: $spacing-unit / 2;
+        background-color: $primary-color;
+        border-radius: 5px;
+        text-align: right;
+
+        .menu-icon {
+            display: block;
+            float: right;
+            width: 36px;
+            height: 26px;
+            line-height: 0;
+            padding-top: 10px;
+            text-align: center;
+
+            > svg {
+                width: 18px;
+                height: 15px;
+
+                path {
+                    fill: white;
+                }
+            }
+        }
+
+        .trigger {
+            clear: both;
+            display: none;
+            @include transform(scaleY(0));
+            @include transform-origin(right top);
+            @include transition-property(transform, opacity);
+            @include transition-duration(0.1s);
+        }
+
+        &:hover {
+            border: 1px solid rgba($primary-color-lighter, .1);
+
+            .trigger {
+                display: block;
+                @include transform(scaleY(1));
+                display: block;
+                padding-bottom: 5px;
+            }
+        }
+
+        .page-link {
+            display: block;
+            padding: 5px 10px;
+
+            &:not(:last-child) {
+                margin-right: 0;
+            }
+            margin-left: 20px;
+        }
+    }
+}

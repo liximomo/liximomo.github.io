@@ -5,6 +5,9 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# local
+timezone: CN
+
 # Site settings
 title: Momo's blog
 email: liximomo@gmail.con
@@ -19,9 +22,10 @@ twitter_username: liximomo
 github_username:  liximomo
 
 exclude:
-  - node/
+  - front/
 
-
+# Posts settings
+excerpt_separator: <!--more-->
 permalink: /:title
 
 # Build settings
@@ -35,13 +39,23 @@ defaults:
   -
     scope:
       path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "_posts"
       type: "posts"
     values:
       layout: "post"
+      css: ["post.css"]
 
 # plugin
 gems:
   - jemoji
+  - jekyll-github-metadata
 
+# sass 
+sass:
+    style: compressed
 
 #personal info

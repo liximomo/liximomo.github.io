@@ -1,0 +1,31 @@
+/**
+ * sticky footer
+ */
+body {
+  @include display(flex);
+  @include flex-direction(column);
+  min-height: 100vh;
+}
+
+.page-content {
+  @include flex(1);
+}
+
+.page-content {
+    padding: $spacing-unit 0;
+    padding-top: $spacing-unit;
+    background: $background-color;
+}
+
+.page-heading {
+    font-size: 20px;
+}
+
+/**
+ * Wrapper
+ */
+.wrapper {
+    @include wrapper();
+    @include wrapper-pad();
+    @include clearfix;
+}

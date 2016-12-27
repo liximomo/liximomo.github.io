@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Redux 指导与Redux 式编程"
 date:   2016-04-18 15:18:42 +0800
 tags:  dataflow, javascript

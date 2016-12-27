@@ -1,7 +1,7 @@
 <header class="siteHeader">
   <div class="siteHeader-bar siteHeader-bar--affixed" id="siteHeader">
     <div class="wrapper">
-      <div class="pull-left title" >
+      <div class="u-fl title" >
          <span ><a class="page-link" href="/">{{ site.title | escape }}</a></span>
       </div>
 
@@ -16,7 +16,7 @@
 
         <div class="trigger">
           {% for nav in site.data.navs %}
-            <a class="page-link" href="{{ nav.url | prepend: site.baseurl }}">{{ nav.name }}</a>
+            <a class="page-link" href="{{ nav.url | relative_url }}">{{ nav.name }}</a>
           {% endfor %}
         </div>
       </nav>   

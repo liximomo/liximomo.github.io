@@ -11,7 +11,7 @@
       <div class="wrapper" >
         <article class="post main-post" itemscope itemtype="http://schema.org/BlogPosting">
           <header>
-            {% include post-header.html %}
+            {% include post/header.html %}
           </header>
 
           <div class="post-content" itemprop="articleBody">
@@ -19,19 +19,19 @@
           </div>
 
           <footer>
-            {% include post-footer.html %}
+            {% include post/footer.html %}
           </footer>
         </article>
       </div>
       <div class="wrapper" >
-        {% include commet.html %}
+        {% include post/commet.html %}
       </div>
     </div>
 
     {% include footer.html %}
-    
-    <script type="text/javascript" src="{{ "/js/index.js" | prepend: site.baseurl }}"></script>
-    <script type="text/javascript" src="{{ "/js/post.js" | prepend: site.baseurl }}"></script>
+
+    {% include helper/script src="dist/post.js" %}
+    <script type="text/javascript" src="{{ "/js/index.js" | relative_url }}"></script>
   </body>
 
 </html>

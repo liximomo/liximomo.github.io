@@ -1,0 +1,31 @@
+---
+---
+
+@charset "utf-8";
+
+// lib
+@import "bourbon/bourbon";
+
+@import 
+    "theme/default",
+    "mixin"
+;
+
+@import 
+  "pages/post/layout/header"
+;
+
+
+/**
+ * disqus Commet
+ */
+#disqus_thread {
+    min-height: 170px;    
+}
+
+#commentMask {
+    position: relative;
+    top: -60px;
+    height: 60px; 
+    background: $background-color;
+}

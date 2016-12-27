@@ -28,5 +28,5 @@ function webpackBuild(cfg ,cb) {
         colors: true
     }));
     cb();
-    });
+  });
 }

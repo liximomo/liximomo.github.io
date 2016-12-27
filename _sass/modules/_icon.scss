@@ -1,0 +1,14 @@
+/**
+ * Icons
+ */
+ @each $name, $size in (xs, 18), (sm, 24), (md, 36), (lg, 48) {
+  .icon--#{$name} > svg {
+    height: #{$size}px;
+    width: #{$size}px;
+  }
+}
+
+.icon  {
+    display: inline-block;
+    vertical-align: middle;
+}

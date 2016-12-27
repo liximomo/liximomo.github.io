@@ -1,0 +1,39 @@
+.postActionsBar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0;
+
+    &-container {
+        position: relative;
+        @include wrapper();
+    }
+}
+
+.postActionsFooter {
+    
+    @include transition-property(transform);
+    @include transition-duration(0.3s);
+
+    &--affixed {
+        background: white;
+        box-shadow: 0 0 1px rgba(0,0,0,.44);
+        border-radius: 3px 3px 0 0;
+        position: absolute;
+        bottom: 0;
+        left: $spacing-unit;
+        right: $spacing-unit;
+        @include transform(translate3D(0, 0, 0));
+
+
+        @include media-query($on-phone) {
+            left: 0;
+            right: 0;
+        }
+
+        &.is-hidden{
+             @include transform(translate3D(0, 100%, 0));
+        }
+    }
+}
