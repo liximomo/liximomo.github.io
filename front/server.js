@@ -12,13 +12,28 @@ const isProd = process.env.NODE_ENV === NODE_ENV.PRODUCTION;
 const webpackConfig = isProd ? require('./webpack.config.prod') : require('./webpack.config.dev');
 const pathCfg = require('./path.cfg');
 
+const program = require('commander');
+
+// 处理命令行参数
+program
+  .version('1.0.0')
+  .usage('[entry ...]')
+  .parse(process.argv);
+
+// console.log('args: %j', program.args);
+
+let entryNames = null;
+if (program.args.length > 0) {
+  entryNames = program.args;
+}
+
 function getEntryGlobPattern(names) {
   return  names
     ? `${pathCfg.src}/entry/+(${names.join('|')}).js`
     : `${pathCfg.src}/entry/*.js`;
 }
 
-const entryGlobPattern = getEntryGlobPattern();
+const entryGlobPattern = getEntryGlobPattern(entryNames);
 
 // config entry and output
 let inculdes = [];

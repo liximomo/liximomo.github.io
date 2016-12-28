@@ -6,9 +6,7 @@ const TARGET = require('./env').TARGET;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
-  devtool: 'source-map',
-
-  entry: ['./src/index.js'],
+  // devtool: 'source-map',
 
   output: {
     devtoolModuleFilenameTemplate: info => {
@@ -68,7 +66,7 @@ const config = {
         drop_console: false,
         drop_debugger: true,
       },
-      sourceMap: true,
+      // sourceMap: true,
     }),
   ],
 };

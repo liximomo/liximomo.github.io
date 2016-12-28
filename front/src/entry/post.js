@@ -1,11 +1,16 @@
 import SmoothHanle from 'smooth-eventhandle';
 import { getPosition } from 'toolkit/dom/measure';
+import { linear } from 'toolkit/easing';
+import { setStyle } from 'toolkit/dom/transition';
 
-let siteHeader = document.querySelector('#siteHeader');
-let headerBar = document.querySelector('#headerBar');
-let pageBarTitle = document.querySelector('#barTitle');
-let pageTitle = document.querySelector('#hugeTitle');
-const contentStartY = siteHeader.clientHeight;
+const siteHeader = document.querySelector('#siteHeader');
+const headerBar = document.querySelector('#headerBar');
+const pageBarTitle = document.querySelector('#barTitle');
+const headerHeight = siteHeader.clientHeight;
+const headerBarHeight = headerBar.clientHeight;
+const initStyle = getComputedStyle(pageBarTitle);
+const titleTop = parseInt(initStyle.top, 10);
+const transitionDistance = titleTop - headerBarHeight + 14;
 
 // comment state
 const comment = document.querySelector('#disqus_thread');
@@ -25,17 +30,20 @@ horizenHint
     return context;
   })
   .action(({ windowY, offsetY }) => {
-    if (windowY > 0) {
-      headerBar.classList.add('is-active');
-      pageBarTitle.classList.add('is-active');
-      pageTitle.classList.add('is-active');
+    if(windowY > transitionDistance) {
+      setStyle(pageBarTitle, {
+        transform: ''
+      });
+      pageBarTitle.classList.add('stay');
     } else {
-      headerBar.classList.remove('is-active');
-      pageBarTitle.classList.remove('is-active');
-      pageTitle.classList.remove('is-active');
+      setStyle(pageBarTitle, {
+        transform: `translate3D(0, -${windowY}px, 0)`
+      });
+      pageBarTitle.classList.remove('stay');
     }
-
-    if (windowY < contentStartY ) {
+  })
+  .action(({ windowY, offsetY }) => {
+    if (windowY < headerHeight ) {
       headerBar.classList.remove('is-hidden');
     } else {
       if (offsetY > 0) {

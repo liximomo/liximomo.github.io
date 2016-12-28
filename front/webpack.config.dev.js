@@ -10,8 +10,6 @@ const config = {
 
   performance: { hints: false },
 
-  entry: ['webpack-hot-middleware/client?reload=true', './src/entry/post.js'],
-
   output: {
     devtoolModuleFilenameTemplate: info => {
       if (!info.resourcePath) {

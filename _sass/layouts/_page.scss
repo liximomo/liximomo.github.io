@@ -26,6 +26,5 @@ body {
  */
 .wrapper {
     @include wrapper();
-    @include wrapper-pad();
     @include clearfix;
 }
