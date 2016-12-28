@@ -6,7 +6,7 @@ const config = {
   projectPath,
   src: `${projectPath}/src`,
   output: path.resolve(projectPath, '../js/page'),
-  public: 'http://localhost:4001/js/dist/',
+  public: 'http://localhost:4001/js/page/',
   pirvateModule: 'private_modules',
 };
 
