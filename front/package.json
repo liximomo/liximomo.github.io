@@ -28,5 +28,8 @@
     "webpack": "beta",
     "webpack-hot-middleware": "^2.13.2",
     "webpack-middleware": "^1.5.1"
+  },
+  "dependencies": {
+    "tether": "^1.4.0"
   }
 }

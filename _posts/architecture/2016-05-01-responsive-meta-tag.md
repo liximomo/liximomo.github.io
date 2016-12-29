@@ -7,7 +7,6 @@ tags:  meta, viewport, mobile
 为什么需要为移动设备使用 `<meta name="viewport" content="width=device-width, initial-scale=1" >`，逻辑像素和物理像素到底是什么，他们是什么样的关系，设备像素比率又是什么？
 
 <!--more-->
-
 ## 三块屏幕
 
 ### 1.视点布局(Vewport Layout)

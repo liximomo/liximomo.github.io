@@ -2,6 +2,17 @@ import SmoothHanle from 'smooth-eventhandle';
 import { getPosition } from 'toolkit/dom/measure';
 import { linear } from 'toolkit/easing';
 import { setStyle } from 'toolkit/dom/transition';
+import Popover from 'popover';
+
+new Popover('.post', 'tooltip', {
+  selector: '[data-tooltip]',
+  classPrefix: 'tooltip',
+  template: '<div class="tooltip" role="tooltip">'
+            + '<div class="tooltip-inner"></div></div>',
+  renderTemplate: (pop, target) => {
+    pop.querySelector('.tooltip-inner').textContent = target.getAttribute('data-tooltip');
+  },
+});
 
 const siteHeader = document.querySelector('#siteHeader');
 const headerBar = document.querySelector('#headerBar');

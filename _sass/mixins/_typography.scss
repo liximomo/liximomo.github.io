@@ -1,0 +1,14 @@
+$wave-color: red;
+
+@mixin underline() {
+  background: linear-gradient(gray, gray) no-repeat;
+  background-size: 100% 0.1em;
+  background-position: 0 1.02em;
+}
+  
+@mixin waveUnderline() {
+  background: linear-gradient(-45deg, transparent 40%, $wave-color 0, $wave-color 60%, transparent 0) 0 1em,
+	            linear-gradient(45deg, transparent 40%, $wave-color 0, $wave-color 60%, transparent 0) 4px 1em;
+	background-size: 6px 3px;
+  background-repeat: repeat-x;
+}

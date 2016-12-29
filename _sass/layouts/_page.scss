@@ -5,6 +5,7 @@ body {
   @include display(flex);
   @include flex-direction(column);
   min-height: 100vh;
+  line-height: $base-line-height;
 }
 
 .page-content {
