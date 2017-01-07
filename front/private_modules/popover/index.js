@@ -4,10 +4,12 @@ import { on, addDOMEvent } from 'toolkit/dom/event';
 import { TRANS } from 'toolkit/dom/transition';
 
 const TetherClass = {
-  element: false,
+  target: false,
   enabled: false,
+  pinned: false,
   abutted: false,
-}
+  'out-of-bounds': false,
+};
 
 const ClassName = {
   FADE : 'fade',
@@ -33,7 +35,7 @@ const DEFAULT = {
   },
   attachment: 'top center',
   delay: 0,
-  duration: 0.2,
+  duration: 0.2, // to do
   offset: '0 0',
   container: document.body,
 };
@@ -41,6 +43,10 @@ const DEFAULT = {
 class Context {
   constructor(target, opt) {
     this.ishover = false; // is hover triggered
+    this.pending = false;
+    this.status = -1; // 0 hide; 1 showed;
+    this.pendingAction = null;
+    this.timeout = null;
 
     this.config = opt;
     this.container = this.config.container;
@@ -56,21 +62,34 @@ class Context {
     dropAttach = dropAttach.join(' ');
     this.dropAttach = dropAttach;
 
-    this.complete = () => {
-      if (this.isShow) {
-        // do nothing
-      } else {
-        this.container.removeChild(this.pop);
-      }
-    };
+    this.complete = null;
+    this._transEnd = () => {
+      this.pending = false;
+      if (this.complete) this.complete();
 
-    this.pop.addEventListener(TRANS.transEndEvent, this.complete);
+      if ((this.pendingAction === 'hide' && this.status)
+        ||(this.pendingAction === 'show' && !this.status)) {
+        this.timeout();
+      }
+  
+      this.timeout = null;
+      this.pendingAction = null;
+    };
+    this.pop.addEventListener(TRANS.transEndEvent, this._transEnd);
   }
 
   show(event) {
-    if(this.isShow) return;
+    if(this.pending) {
+      this.pendingAction = 'show';
+      this.timeout = () => this.show(event);
+      return;
+    }
 
-    this.isShow = true;
+    this.pending = true;
+
+    this.complete = () => {
+      this.status = 1;
+    }
 
     if (event.name === 'hover') {
       this.ishover = true;
@@ -96,14 +115,21 @@ class Context {
     setTimeout(() => {
       this.pop.style.opacity = 0.9;
     }, this.config.delay);
-
   }
 
   hide(event) {
-    if(!this.isShow) return;
+    if(this.pending) {
+      this.pendingAction = 'hide';
+      this.timeout = () => this.hide(event);
+      return;
+    }
+    this.pending = true;
 
-    this.isShow = false;
-    
+    this.complete = () => {
+      this.status = 0;
+      this.container.removeChild(this.pop);
+    }
+
     if (event.name === 'hover') {
       this.ishover = false;
     } else if (event.name === 'click') {

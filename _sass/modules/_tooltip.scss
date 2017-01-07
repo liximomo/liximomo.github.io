@@ -10,7 +10,7 @@ $tooltip-arrow-width:         5px !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 // Base class
-.tooltip {
+.tooltip.tooltip-element {
   position: absolute;
   z-index: $zindex-tooltip;
   display: block;
