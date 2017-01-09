@@ -5,6 +5,8 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# directory structure
+
 # local
 timezone: CN
 
@@ -46,6 +48,12 @@ defaults:
     scope:
       path: "_posts"
       type: "posts"
+    values:
+      layout: "post"
+      css: ["post.css"]
+  -
+    scope:
+      path: "_drafts"
     values:
       layout: "post"
       css: ["post.css"]
