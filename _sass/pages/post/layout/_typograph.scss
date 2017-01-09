@@ -1,0 +1,160 @@
+blockquote + p,
+p + p {
+  margin-top: 29px
+}
+
+h2 + p {
+  margin-top: 18px
+}
+
+h3 + p {
+  margin-top: 8px
+}
+
+h4 + p {
+  margin-top: 6px
+}
+
+blockquote {
+  margin-top: 38px
+}
+
+blockquote + blockquote {
+  margin-top: 0;
+  padding-top: 27px
+}
+
+p + blockquote {
+  margin-top: 29px
+}
+
+h2 + blockquote {
+  margin-top: 18px
+}
+
+h3 + blockquote {
+  margin-top: 12px
+}
+
+h4 + blockquote {
+  margin-top: 10px
+}
+
+h2 {
+  margin-top: 63px
+}
+
+blockquote + h2,
+p + h2 {
+  margin-top: 54px
+}
+
+h3 + h2 {
+  margin-top: -3px
+}
+
+h4 + h2 {
+  margin-top: -3px
+}
+
+h3 {
+  margin-top: 53px
+}
+
+blockquote + h3,
+p + h3 {
+  margin-top: 56px
+}
+
+h2 + h3 {
+  margin-top: 1px
+}
+
+h4 + h3 {
+  margin-top: 31px
+}
+
+h4 {
+  margin-top: 39px
+}
+
+blockquote + h4,
+p + h4 {
+  margin-top: 30px
+}
+
+h2 + h4 {
+  margin-top: 3px
+}
+
+h3 + h4 {
+  margin-top: 31px
+}
+
+title {
+  margin-top: 39px
+}
+
+h2 + .subtitle,
+h3 + .subtitle {
+  margin-top: 5px;
+  margin-bottom: 22px
+}
+
+.subtitle + h3 {
+  margin-top: 45px
+}
+
+title + p {
+  margin-top: 10px
+}
+
+.subtitle + p {
+  margin-top: 10px
+}
+
+figure,
+pre {
+  margin-top: 52px
+}
+
+figure.graf-after--blockquote,figure.graf-after--p,.graf--mixtapeEmbed.graf-after--blockquote,.graf--mixtapeEmbed.graf-after--p,.graf--pre.graf-after--blockquote,.graf--pre.graf-after--p,.postList+figure,.postList+.graf--mixtapeEmbed,.postList+.graf--pre {
+  margin-top: 43px
+}
+
+figure.graf-after--h2,.graf--mixtapeEmbed.graf-after--h2,.graf--pre.graf-after--h2 {
+  margin-top: 46px
+}
+
+figure.graf-after--h3,.graf--mixtapeEmbed.graf-after--h3,.graf--pre.graf-after--h3 {
+  margin-top: 44px
+}
+
+figure.graf-after--h4,.graf--mixtapeEmbed.graf-after--h4,.graf--pre.graf-after--h4 {
+  margin-top: 44px
+}
+
+figure.graf-after--pullquote,.graf--mixtapeEmbed.graf-after--pullquote,.graf--pre.graf-after--pullquote {
+  margin-top: 68px
+}
+
+.graf--layoutFillWidth,.graf--layoutFillWidth.graf-after--blockquote,.graf--layoutFillWidth.graf-after--p,.postList+.graf--layoutFillWidth {
+  margin-top: 80px;
+  margin-bottom: 80px
+}
+
+.graf--layoutFillWidth+.graf--layoutFillWidth {
+  margin-top: -80px
+}
+
+hr.section-divider {
+  margin-top: 52px;
+  margin-bottom: 42px
+}
+
+section.is-backgrounded {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  margin-top: 80px;
+  margin-bottom: 80px
+}

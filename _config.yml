@@ -28,8 +28,9 @@ exclude:
 excerpt_separator: <!--more-->
 permalink: /:title
 
-# Build settings
+# Conversion
 markdown: kramdown
+highlighter: rouge
 
 kramdown:
    input: GFM

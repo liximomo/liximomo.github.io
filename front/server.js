@@ -44,7 +44,6 @@ if (isProd) {
 }
 
 const entryFiles = glob.sync(entryGlobPattern);
-console.log('match files:\n', entryFiles);
 const entry = entryFiles.reduce((entries, filePath) => {
   const basename = path.basename(filePath);
   const entryName = basename.split('.')[0];
@@ -52,7 +51,7 @@ const entry = entryFiles.reduce((entries, filePath) => {
   return entries;
 }, {});
 webpackConfig.entry = entry;
-
+console.log('entries :\n', entry);
 const compiler = webpack(webpackConfig);
 
 // Initialize the Express App
@@ -82,5 +81,5 @@ app.listen(port, '0.0.0.0', (error) => {
   if (error) {
     throw error;
   }
-  console.log(`app is running on 0.0.0.0:${port}`);
+  console.log(`app is running on http://localhost:${port}`);
 });

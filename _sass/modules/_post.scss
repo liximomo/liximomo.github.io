@@ -1,68 +1,191 @@
 .postList {
-    margin-left: 0;
-    list-style: none;
-
-    > .postList-item:not(:last-child) {
-        margin-bottom: $spacing-unit;
-        border-bottom: 1px solid rgba($primary-color-lighter, 0.25);
-    }
+  margin-left: 0;
+  list-style: none;
+  > .postList-item:not(:last-child) {
+    margin-bottom: $spacing-unit;
+    border-bottom: 1px solid rgba($primary-color-lighter, 0.25);
+  }
 }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
+  font-size: $small-font-size;
+  color: $grey-color;
 }
 
 a.post-link {
-    color: inherit;
-    display: block;
-    font-size: 24px;
-    &:hover {
-        text-decoration: none;
-    }
+  color: inherit;
+  display: block;
+  font-size: 24px;
+  &:hover {
+    text-decoration: none;
+  }
 }
+
 
 /**
  * Posts
  */
+
 .post-header {
-    margin-bottom: $spacing-unit;
+  margin-bottom: $spacing-unit;
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
-
-    @include media-query($on-pad) {
-        font-size: 36px;
-    }
+  font-size: 42px;
+  letter-spacing: -1px;
+  line-height: 1;
+  @include media-query($on-pad) {
+    font-size: 36px;
+  }
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
-
-        @include media-query($on-pad) {
-            font-size: 28px;
-        }
+  margin-bottom: $spacing-unit;
+  h2 {
+    font-size: 32px;
+    @include media-query($on-pad) {
+      font-size: 28px;
     }
-
-    h3 {
-        font-size: 26px;
-
-        @include media-query($on-pad) {
-            font-size: 22px;
-        }
+  }
+  h3 {
+    font-size: 26px;
+    @include media-query($on-pad) {
+      font-size: 22px;
     }
-
-    h4 {
-        font-size: 20px;
-
-        @include media-query($on-pad) {
-            font-size: 18px;
-        }
+  }
+  h4 {
+    font-size: 20px;
+    @include media-query($on-pad) {
+      font-size: 18px;
     }
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  ul,
+  ol,
+  dl,
+  figure,
+  .highlight {
+    margin-bottom: 0px;
+  }
+  p {
+    margin-top: 38px;
+  }
+  blockquote + p,
+  p + p {
+    margin-top: 29px
+  }
+  h2 + p {
+    margin-top: 18px
+  }
+  h3 + p {
+    margin-top: 8px
+  }
+  h4 + p {
+    margin-top: 6px
+  }
+  blockquote {
+    margin-top: 38px
+  }
+  blockquote + blockquote {
+    margin-top: 0;
+    padding-top: 27px
+  }
+  p + blockquote {
+    margin-top: 29px
+  }
+  h2 + blockquote {
+    margin-top: 18px
+  }
+  h3 + blockquote {
+    margin-top: 12px
+  }
+  h4 + blockquote {
+    margin-top: 10px
+  }
+  h2 {
+    margin-top: 63px
+  }
+  blockquote + h2,
+  p + h2 {
+    margin-top: 54px
+  }
+  h3 + h2 {
+    margin-top: -3px
+  }
+  h4 + h2 {
+    margin-top: -3px
+  }
+  h3 {
+    margin-top: 53px
+  }
+  blockquote + h3,
+  p + h3 {
+    margin-top: 56px
+  }
+  h2 + h3 {
+    margin-top: 1px
+  }
+  h4 + h3 {
+    margin-top: 31px
+  }
+  h4 {
+    margin-top: 39px
+  }
+  blockquote + h4,
+  p + h4 {
+    margin-top: 30px
+  }
+  h2 + h4 {
+    margin-top: 3px
+  }
+  h3 + h4 {
+    margin-top: 31px
+  }
+  title {
+    margin-top: 39px
+  }
+  h2 + .subtitle,
+  h3 + .subtitle {
+    margin-top: 5px;
+    margin-bottom: 22px
+  }
+  .subtitle + h3 {
+    margin-top: 45px
+  }
+  title + p {
+    margin-top: 10px
+  }
+  .subtitle + p {
+    margin-top: 10px
+  }
+  figure,
+  div > pre.highlight {
+    margin-top: 52px
+  }
+  blockquote + figure,
+  p + figure,
+  blockquote + div > pre.highlight,
+  p + div > pre.highlight {
+    margin-top: 43px
+  }
+  h2 + figure,
+  h2 + div > pre.highlight {
+    margin-top: 46px
+  }
+  h3 + figure,
+  h3 + div > pre.highlight {
+    margin-top: 44px
+  }
+  h4 + figure,
+  h4 + div > pre.highlight {
+    margin-top: 44px
+  }
 }
