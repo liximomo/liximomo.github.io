@@ -3,6 +3,8 @@ title:  "hello-2017"
 date:   2017-01-08 15:18:42 +0800
 tags:  thoughts
 layout: post
+excerpt: >
+  2017 展望。
 ---
 
 ## 2016

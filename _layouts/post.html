@@ -24,7 +24,9 @@
         </article>
       </div>
       <div class="wrapper" >
-        {% include post/commet.html %}
+        {% if jekyll.environment != "development" %}
+          {% include post/commet.html %}
+        {% endif %}
       </div>
     </div>
 

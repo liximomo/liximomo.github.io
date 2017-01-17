@@ -67,6 +67,8 @@ horizenHint
     }
   })
   .action(({ windowY, offsetY }) => {
+    if(process.env.NODE_ENV !== 'production') return;
+
     if (!isCommentLoad && scrollY > scrollTrigger) {
       loadComment();
       isCommentLoad = true;
