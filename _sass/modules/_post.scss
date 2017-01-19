@@ -83,148 +83,238 @@ a.post-link {
   p {
     font-size: 20px;
     margin-top: 38px;
+    @include media-query($on-pad) {
+        font-size: 20px - 4;
+        margin-top: 38px - 4;
+    }
   }
 
   blockquote + p,
   p + p {
-    margin-top: 29px
+    margin-top: 29px;
+    @include media-query($on-pad) {
+        margin-top: 29px - 4;
+    }
   }
 
   h2 + p {
-    margin-top: 18px
+    margin-top: 18px;
+    @include media-query($on-pad) {
+        margin-top: 18px - 4;
+    }
   }
 
   h3 + p {
-    margin-top: 8px
+    margin-top: 8px;
+    @include media-query($on-pad) {
+        margin-top: 8px - 2;
+    }
   }
 
   h4 + p {
-    margin-top: 6px
+    margin-top: 6px;
+    @include media-query($on-pad) {
+        margin-top: 6px - 2;
+    }
   }
 
   blockquote {
-    margin-top: 38px
+    margin-top: 38px;
+    @include media-query($on-pad) {
+        margin-top: 38px - 4;
+    }
   }
 
   blockquote + blockquote {
     margin-top: 0;
-    padding-top: 27px
+    padding-top: 27px;
+    @include media-query($on-pad) {
+        padding-top: 27px - 4;
+    }
   }
 
   p + blockquote {
-    margin-top: 29px
+    margin-top: 29px;
+    @include media-query($on-pad) {
+        margin-top: 29px - 4;
+    }
   }
 
   h2 + blockquote {
-    margin-top: 18px
+    margin-top: 18px;
+    @include media-query($on-pad) {
+        margin-top: 18px - 4;
+    }
   }
 
   h3 + blockquote {
-    margin-top: 12px
+    margin-top: 12px;
+    @include media-query($on-pad) {
+        margin-top: 12px - 4;
+    }
+    
   }
 
   h4 + blockquote {
-    margin-top: 10px
+    margin-top: 10px;
+    @include media-query($on-pad) {
+        margin-top: 10px - 2;
+    }
   }
 
   h2 {
-    margin-top: 63px
+    margin-top: 63px;
+    @include media-query($on-pad) {
+        margin-top: 63px - 8;
+    }
   }
 
   blockquote + h2,
   p + h2 {
-    margin-top: 54px
+    margin-top: 54px;
+    @include media-query($on-pad) {
+        margin-top: 54px - 8;
+    }
   }
 
   h3 + h2 {
-    margin-top: -3px
+    margin-top: -3px;
   }
 
   h4 + h2 {
-    margin-top: -3px
+    margin-top: -3px;
   }
 
   h3 {
-    margin-top: 53px
+    margin-top: 53px;
+    @include media-query($on-pad) {
+        margin-top: 53px - 8;
+    }
   }
 
   blockquote + h3,
   p + h3 {
-    margin-top: 56px
+    margin-top: 56px;
+    @include media-query($on-pad) {
+        margin-top: 56px - 8;
+    }
   }
 
   h2 + h3 {
-    margin-top: 1px
+    margin-top: 1px;
   }
 
   h4 + h3 {
-    margin-top: 31px
+    margin-top: 31px;
+    @include media-query($on-pad) {
+        margin-top: 31px - 4;
+    }
   }
 
   h4 {
-    margin-top: 39px
+    margin-top: 39px;
+    @include media-query($on-pad) {
+        margin-top: 39px - 4;
+    }
   }
 
   blockquote + h4,
   p + h4 {
-    margin-top: 30px
+    margin-top: 30px;
+    @include media-query($on-pad) {
+        margin-top: 30px - 4;
+    }
   }
 
   h2 + h4 {
-    margin-top: 3px
+    margin-top: 3px;
   }
 
   h3 + h4 {
-    margin-top: 31px
+    margin-top: 31px;
+    @include media-query($on-pad) {
+        margin-top: 31px - 4;
+    }
   }
 
   title {
-    margin-top: 39px
+    margin-top: 39px;
+    @include media-query($on-pad) {
+        margin-top: 39px - 4;
+    }
   }
 
   h2 + .subtitle,
   h3 + .subtitle {
     margin-top: 5px;
-    margin-bottom: 22px
+    margin-bottom: 22px;
+    @include media-query($on-pad) {
+        margin-top: 5px - 1;
+        margin-bottom: 22px - 4;
+    }
   }
 
   .subtitle + h3 {
-    margin-top: 45px
+    margin-top: 45px;
+    @include media-query($on-pad) {
+        margin-top: 45px - 6;
+    }
   }
 
   title + p {
-    margin-top: 10px
+    margin-top: 10px;
+    @include media-query($on-pad) {
+        margin-top: 10px - 2;
+    }
   }
 
   .subtitle + p {
-    margin-top: 10px
+    margin-top: 10px;
+    @include media-query($on-pad) {
+        margin-top: 10px - 2;
+    }
   }
 
   figure,
   div > pre.highlight {
-    margin-top: 52px
+    margin-top: 52px;
+    @include media-query($on-pad) {
+        margin-top: 52px - 8;
+    }
   }
 
   blockquote + figure,
   p + figure,
   blockquote + div > pre.highlight,
   p + div > pre.highlight {
-    margin-top: 43px
+    margin-top: 43px;
+    @include media-query($on-pad) {
+        margin-top: 43px - 6;
+    }
   }
 
   h2 + figure,
   h2 + div > pre.highlight {
-    margin-top: 46px
+    margin-top: 46px;
+    @include media-query($on-pad) {
+        margin-top: 46px - 6;
+    }
   }
 
   h3 + figure,
   h3 + div > pre.highlight {
-    margin-top: 44px
+    margin-top: 44px;
+    @include media-query($on-pad) {
+        margin-top: 44px - 6;
+    }
   }
 
   h4 + figure,
   h4 + div > pre.highlight {
-    margin-top: 44px
+    margin-top: 44px;
+    @include media-query($on-pad) {
+        margin-top: 44px - 6;
+    }
   }
 
   hr {
@@ -235,6 +325,10 @@ a.post-link {
     text-align: center;
     margin-top: 52px;
     margin-bottom: 42px;
+    @include media-query($on-pad) {
+        margin-top: 52px - 8;
+        margin-bottom: 42px - 6;
+    }
 
     &:before {
       content: '...';
