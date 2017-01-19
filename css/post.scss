@@ -33,4 +33,7 @@
     top: -60px;
     height: 60px; 
     background: $background-color;
+    @include media-query($on-pad) {
+        top: -54px;
+    }
 }
