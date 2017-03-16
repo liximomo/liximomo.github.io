@@ -27,7 +27,7 @@
 .siteHeader-bar .wrapper {
     @include calc(max-width, "#{$content-width + 300px} - (#{$spacing-unit} * 2)");
 
-    @include media-query($on-pad) {
+    @include media-query($screen-size-sm) {
         @include  calc(max-width, "#{$content-width} - (#{$spacing-unit})");
     }
 }

@@ -44,7 +44,7 @@
 
 
 
-@include media-query($on-pad) {
+@include media-query($screen-size-sm) {
     .footer-col-1,
     .footer-col-2 {
         @include calc(width, "50% - (#{$spacing-unit} / 2)");

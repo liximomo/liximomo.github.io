@@ -34,7 +34,7 @@ a.post-link {
   font-size: 42px;
   letter-spacing: -1px;
   line-height: 1;
-  @include media-query($on-pad) {
+  @include media-query($screen-size-sm) {
     font-size: 36px;
   }
 }
@@ -42,25 +42,54 @@ a.post-link {
 .post-content {
   margin-bottom: $spacing-unit;
 
-  h2 {
-    font-size: 38px;
-    @include media-query($on-pad) {
-      font-size: 34px;
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    display: block;
+    border: 0;
+    text-align: center;
+    margin-top: 52px;
+    margin-bottom: 42px;
+    
+    &:before {
+      content: '...';
+      display: inline-block;
+      margin-left: .6em;
+      color: rgba(0,0,0,.6);
+      position: relative;
+      top: -30px;
+      font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 28px;
+      letter-spacing: .6em;
     }
+  }
+
+  h1 {
+    font-size: 2 * 16px;
+  }
+
+  h2 {
+    font-size: 1.75 * 16px;
   }
 
   h3 {
-    font-size: 32px;
-    @include media-query($on-pad) {
-      font-size: 28px;
-    }
+    font-size: 1.25 * 16px;
   }
 
   h4 {
-    font-size: 26px;
-    @include media-query($on-pad) {
-      font-size: 22px;
-    }
+    font-size: 1.15 * 16px;
+  }
+
+  h5 {
+    font-size: 1 * 16px;
+  }
+
+  h6 {
+    margin-top: 1 * 16px;
+    font-size: 1 * 16px;
+    color: color('stealthy');
   }
 
   h1,
@@ -76,272 +105,377 @@ a.post-link {
   ol,
   dl,
   figure,
-  .highlight {
+  iframe {
     margin-bottom: 0px;
   }
 
   p {
-    font-size: 20px;
-    margin-top: 38px;
-    @include media-query($on-pad) {
-        font-size: 20px - 4;
-        margin-top: 38px - 4;
-    }
+    margin-top: 38px
   }
 
   blockquote + p,
-  p + p {
-    margin-top: 29px;
-    @include media-query($on-pad) {
-        margin-top: 29px - 4;
-    }
+  p + p,
+  .postList + p {
+    margin-top: 29px
   }
 
   h2 + p {
-    margin-top: 18px;
-    @include media-query($on-pad) {
-        margin-top: 18px - 4;
-    }
+    margin-top: 18px
   }
 
   h3 + p {
-    margin-top: 8px;
-    @include media-query($on-pad) {
-        margin-top: 8px - 2;
-    }
+    margin-top: 8px
   }
 
   h4 + p {
-    margin-top: 6px;
-    @include media-query($on-pad) {
-        margin-top: 6px - 2;
-    }
+    margin-top: 6px
   }
 
   blockquote {
-    margin-top: 38px;
-    @include media-query($on-pad) {
-        margin-top: 38px - 4;
-    }
+    margin-top: 38px
   }
 
   blockquote + blockquote {
     margin-top: 0;
-    padding-top: 27px;
-    @include media-query($on-pad) {
-        padding-top: 27px - 4;
-    }
+    padding-top: 27px
   }
 
-  p + blockquote {
-    margin-top: 29px;
-    @include media-query($on-pad) {
-        margin-top: 29px - 4;
-    }
+  p + blockquote,
+  .postList + blockquote {
+    margin-top: 29px
   }
 
   h2 + blockquote {
-    margin-top: 18px;
-    @include media-query($on-pad) {
-        margin-top: 18px - 4;
-    }
+    margin-top: 18px
   }
 
   h3 + blockquote {
-    margin-top: 12px;
-    @include media-query($on-pad) {
-        margin-top: 12px - 4;
-    }
-    
+    margin-top: 12px
   }
 
   h4 + blockquote {
-    margin-top: 10px;
-    @include media-query($on-pad) {
-        margin-top: 10px - 2;
-    }
+    margin-top: 10px
+  }
+
+  .postList {
+    margin-top: 38px
+  }
+
+  blockquote + .postList,
+  p + .postList,
+  .postList + .postList {
+    margin-top: 29px
+  }
+
+  h2 + .postList {
+    margin-top: 18px
+  }
+
+  h3 + .postList {
+    margin-top: 12px
+  }
+
+  h4 + .postList {
+    margin-top: 10px
   }
 
   h2 {
-    margin-top: 63px;
-    @include media-query($on-pad) {
-        margin-top: 63px - 8;
-    }
+    margin-top: 63px
   }
 
   blockquote + h2,
-  p + h2 {
-    margin-top: 54px;
-    @include media-query($on-pad) {
-        margin-top: 54px - 8;
-    }
+  p + h2,
+  .postList + h2 {
+    margin-top: 54px
   }
 
-  h3 + h2 {
-    margin-top: -3px;
+  h2 {
+    margin-top: -3px
   }
 
-  h4 + h2 {
-    margin-top: -3px;
+  h2 {
+    margin-top: -3px
   }
 
   h3 {
-    margin-top: 53px;
-    @include media-query($on-pad) {
-        margin-top: 53px - 8;
-    }
+    margin-top: 53px
   }
 
   blockquote + h3,
-  p + h3 {
-    margin-top: 56px;
-    @include media-query($on-pad) {
-        margin-top: 56px - 8;
-    }
+  p + h3,
+  .postList + h3 {
+    margin-top: 56px
   }
 
   h2 + h3 {
-    margin-top: 1px;
+    margin-top: 1px
   }
 
   h4 + h3 {
-    margin-top: 31px;
-    @include media-query($on-pad) {
-        margin-top: 31px - 4;
-    }
+    margin-top: 31px
   }
 
   h4 {
-    margin-top: 39px;
-    @include media-query($on-pad) {
-        margin-top: 39px - 4;
-    }
+    margin-top: 39px
   }
 
   blockquote + h4,
-  p + h4 {
-    margin-top: 30px;
-    @include media-query($on-pad) {
-        margin-top: 30px - 4;
-    }
+  p + h4,
+  .postList + h4 {
+    margin-top: 30px
   }
 
   h2 + h4 {
-    margin-top: 3px;
+    margin-top: 3px
   }
 
   h3 + h4 {
-    margin-top: 31px;
-    @include media-query($on-pad) {
-        margin-top: 31px - 4;
-    }
+    margin-top: 31px
   }
 
   title {
-    margin-top: 39px;
-    @include media-query($on-pad) {
-        margin-top: 39px - 4;
-    }
-  }
-
-  h2 + .subtitle,
-  h3 + .subtitle {
-    margin-top: 5px;
-    margin-bottom: 22px;
-    @include media-query($on-pad) {
-        margin-top: 5px - 1;
-        margin-bottom: 22px - 4;
-    }
-  }
-
-  .subtitle + h3 {
-    margin-top: 45px;
-    @include media-query($on-pad) {
-        margin-top: 45px - 6;
-    }
+    margin-top: 39px
   }
 
   title + p {
-    margin-top: 10px;
-    @include media-query($on-pad) {
-        margin-top: 10px - 2;
-    }
+    margin-top: 10px
   }
 
-  .subtitle + p {
-    margin-top: 10px;
-    @include media-query($on-pad) {
-        margin-top: 10px - 2;
-    }
-  }
 
-  figure,
-  div > pre.highlight {
-    margin-top: 52px;
-    @include media-query($on-pad) {
-        margin-top: 52px - 8;
-    }
+  figure, pre {
+    margin-top: 52px
   }
 
   blockquote + figure,
   p + figure,
-  blockquote + div > pre.highlight,
-  p + div > pre.highlight {
-    margin-top: 43px;
-    @include media-query($on-pad) {
-        margin-top: 43px - 6;
-    }
+  blockquote + pre,
+  p + pre,
+  .postList + figure,
+  .postList + pre {
+    margin-top: 43px
   }
 
   h2 + figure,
-  h2 + div > pre.highlight {
-    margin-top: 46px;
-    @include media-query($on-pad) {
-        margin-top: 46px - 6;
-    }
+  h2 + pre {
+    margin-top: 46px
   }
 
   h3 + figure,
-  h3 + div > pre.highlight {
-    margin-top: 44px;
-    @include media-query($on-pad) {
-        margin-top: 44px - 6;
-    }
+  h3 + pre {
+    margin-top: 44px
   }
 
   h4 + figure,
-  h4 + div > pre.highlight {
-    margin-top: 44px;
-    @include media-query($on-pad) {
-        margin-top: 44px - 6;
-    }
+  h4 + pre {
+    margin-top: 44px
   }
 
   hr {
-    box-sizing: content-box;
-    height: 0;
-    display: block;
-    border: 0;
-    text-align: center;
     margin-top: 52px;
-    margin-bottom: 42px;
-    @include media-query($on-pad) {
-        margin-top: 52px - 8;
-        margin-bottom: 42px - 6;
+    margin-bottom: 42px
+  }
+
+  iframe {
+    margin: 0;
+    margin-top: 1.5 * 16px;
+  }
+
+  // media screen sm start
+  @include media-query($screen-size-sm) {
+    h1 {
+      font-size: 2 * 16px * 0.85;
     }
 
-    &:before {
-      content: '...';
-      display: inline-block;
-      margin-left: .6em;
-      color: rgba(0,0,0,.6);
-      position: relative;
-      top: -30px;
-      font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-      font-weight: 400;
-      font-style: italic;
-      font-size: 28px;
-      letter-spacing: .6em;
+    h2 {
+      font-size: 1.75 * 16px * 0.85;
+    }
+
+    h3 {
+      font-size: 1.25 * 16px * 0.85;
+    }
+
+    h4 {
+      font-size: 1.15 * 16px * 0.85;
+    }
+
+    h5 {
+      font-size: 1 * 16px * 0.85;
+    }
+
+    h6 {
+      font-size: 1 * 16px;
+      font-size: 1 * 16px * 0.85;
+    } 
+
+    p {
+      margin-top:30px
+    }
+
+    blockquote + p,
+    p + p,
+    .postList + p {
+      margin-top: 21px
+    }
+
+    h2 + p {
+      margin-top: 14px
+    }
+
+    h3 + p {
+      margin-top: 8px
+    }
+
+    h4 + p {
+      margin-top: 6px
+    }
+
+    blockquote {
+      margin-top: 30px
+    }
+
+    blockquote + blockquote {
+      margin-top: 0;
+      padding-top: 19px
+    }
+
+    p + blockquote,
+    .postList + blockquote {
+      margin-top: 21px
+    }
+
+    h2 + blockquote {
+      margin-top: 14px
+    }
+
+    h3 + blockquote {
+      margin-top: 8px
+    }
+
+    h4 + blockquote {
+      margin-top: 6px
+    }
+
+    .postList {
+      margin-top: 30px
+    }
+
+    blockquote + .postList,
+    p + .postList,
+    .postList + .postList {
+      margin-top: 21px
+    }
+
+    h2 + .postList {
+      margin-top: 14px
+    }
+
+    h3 + .postList {
+      margin-top: 8px
+    }
+
+    h4 + .postList {
+      margin-top: 6px
+    }
+
+    h2 {
+      margin-top: 35px
+    }
+
+    blockquote + h2,
+    p + h2,
+    .postList + h2 {
+      margin-top: 26px
+    }
+
+    h3 + h2 {
+      margin-top: -3px
+    }
+
+    h4 + h2 {
+      margin-top: -3px
+    }
+
+    h3 {
+      margin-top: 45px
+    }
+
+    blockquote + h3,
+    p + h3,
+    .postList + h3 {
+      margin-top: 28px
+    }
+
+    h2 + h3 {
+      margin-top: 1px
+    }
+
+    h4 + h3 {
+      margin-top: 23px
+    }
+
+    h4 {
+      margin-top: 31px
+    }
+
+    blockquote + h4,
+    p + h4,
+    .postList + h4 {
+      margin-top: 22px
+    }
+
+    h2 + h4 {
+      margin-top: 3px
+    }
+
+    h3 + h4 {
+      margin-top: 23px
+    }
+
+    figure, pre {
+      margin-top: 44px
+    }
+
+    blockquote + figure,
+    p + figure,
+    blockquote + pre,
+    p + pre,
+    .postList + figure,
+    .postList + pre {
+      margin-top: 35px
+    }
+
+    h2 + figure,
+    h2 + pre {
+      margin-top: 38px
+    }
+
+    h3 + figure,
+    h3 + pre {
+      margin-top: 36px
+    }
+
+    h4 + figure,
+    h4 + pre {
+      margin-top: 36px
+    }
+
+    hr {
+      margin-top: 44px;
+      margin-bottom: 34px
+    }
+
+    title {
+      margin-top: 31px
+    }
+
+    title + p {
+      margin-top: 10px
+    }
+    
+    iframe {
+      margin: 0;
+      margin-top: 1.5 * 16px;
     }
   }
+  // media screen sm end
 }

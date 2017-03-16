@@ -9,7 +9,7 @@
     border-bottom: 1px solid #FFCDD2;
     height: $site-header-height;
 
-    @include media-query($on-pad) {
+    @include media-query($screen-size-sm) {
         height: $site-header-height/2;
     }
 }
@@ -48,7 +48,7 @@
         margin-left: 30px;
     }
     
-    @include media-query($on-pad) {
+    @include media-query($screen-size-sm) {
         top: 73px;
         margin-left: 0px;
         padding-left: $spacing-unit/2;
@@ -65,7 +65,7 @@
     width: 48px;
     z-index: 2;
 
-    @include media-query($on-pad) {
+    @include media-query($screen-size-sm) {
         left: 0px;
     }
 }
