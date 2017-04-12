@@ -189,14 +189,6 @@ a.post-link {
     margin-top: 54px
   }
 
-  h2 {
-    margin-top: -3px
-  }
-
-  h2 {
-    margin-top: -3px
-  }
-
   h3 {
     margin-top: 53px
   }
@@ -280,159 +272,161 @@ a.post-link {
     margin-top: 1.5 * 16px;
   }
 
+
   // media screen sm start
   @include media-query($screen-size-sm) {
     h1 {
-      font-size: 2 * 16px * 0.85;
+        font-size: 2 * 16px * 0.85;
     }
 
     h2 {
-      font-size: 1.75 * 16px * 0.85;
+        font-size: 1.75 * 16px * 0.85;
     }
 
     h3 {
-      font-size: 1.25 * 16px * 0.85;
+        font-size: 1.25 * 16px * 0.85;
     }
 
     h4 {
-      font-size: 1.15 * 16px * 0.85;
+        font-size: 1.15 * 16px * 0.85;
     }
 
     h5 {
-      font-size: 1 * 16px * 0.85;
+        font-size: 1 * 16px * 0.85;
     }
 
     h6 {
-      font-size: 1 * 16px;
-      font-size: 1 * 16px * 0.85;
-    } 
+        font-size: 1 * 16px;
+        font-size: 1 * 16px * 0.85;
+    }
 
     p {
-      margin-top:30px
+        margin-top: 30px
     }
 
     blockquote + p,
     p + p,
     .postList + p {
-      margin-top: 21px
+        margin-top: 21px
     }
 
     h2 + p {
-      margin-top: 14px
+        margin-top: 14px
     }
 
     h3 + p {
-      margin-top: 8px
+        margin-top: 8px
     }
 
     h4 + p {
-      margin-top: 6px
+        margin-top: 6px
     }
 
     blockquote {
-      margin-top: 30px
+        margin-top: 30px
     }
 
     blockquote + blockquote {
-      margin-top: 0;
-      padding-top: 19px
+        margin-top: 0;
+        padding-top: 19px
     }
 
     p + blockquote,
     .postList + blockquote {
-      margin-top: 21px
+        margin-top: 21px
     }
 
     h2 + blockquote {
-      margin-top: 14px
+        margin-top: 14px
     }
 
     h3 + blockquote {
-      margin-top: 8px
+        margin-top: 8px
     }
 
     h4 + blockquote {
-      margin-top: 6px
+        margin-top: 6px
     }
 
     .postList {
-      margin-top: 30px
+        margin-top: 30px
     }
 
     blockquote + .postList,
     p + .postList,
     .postList + .postList {
-      margin-top: 21px
+        margin-top: 21px
     }
 
     h2 + .postList {
-      margin-top: 14px
+        margin-top: 14px
     }
 
     h3 + .postList {
-      margin-top: 8px
+        margin-top: 8px
     }
 
     h4 + .postList {
-      margin-top: 6px
+        margin-top: 6px
     }
 
     h2 {
-      margin-top: 35px
+        margin-top: 35px
     }
 
     blockquote + h2,
     p + h2,
     .postList + h2 {
-      margin-top: 26px
+        margin-top: 26px
     }
 
     h3 + h2 {
-      margin-top: -3px
+        margin-top: -3px
     }
 
     h4 + h2 {
-      margin-top: -3px
+        margin-top: -3px
     }
 
     h3 {
-      margin-top: 45px
+        margin-top: 45px
     }
 
     blockquote + h3,
     p + h3,
     .postList + h3 {
-      margin-top: 28px
+        margin-top: 28px
     }
 
     h2 + h3 {
-      margin-top: 1px
+        margin-top: 1px
     }
 
     h4 + h3 {
-      margin-top: 23px
+        margin-top: 23px
     }
 
     h4 {
-      margin-top: 31px
+        margin-top: 31px
     }
 
     blockquote + h4,
     p + h4,
     .postList + h4 {
-      margin-top: 22px
+        margin-top: 22px
     }
 
     h2 + h4 {
-      margin-top: 3px
+        margin-top: 3px
     }
 
     h3 + h4 {
-      margin-top: 23px
+        margin-top: 23px
     }
 
-    figure, pre {
-      margin-top: 44px
+    figure,
+    pre {
+        margin-top: 44px
     }
 
     blockquote + figure,
@@ -441,40 +435,40 @@ a.post-link {
     p + pre,
     .postList + figure,
     .postList + pre {
-      margin-top: 35px
+        margin-top: 35px
     }
 
     h2 + figure,
     h2 + pre {
-      margin-top: 38px
+        margin-top: 38px
     }
 
     h3 + figure,
     h3 + pre {
-      margin-top: 36px
+        margin-top: 36px
     }
 
     h4 + figure,
     h4 + pre {
-      margin-top: 36px
+        margin-top: 36px
     }
 
     hr {
-      margin-top: 44px;
-      margin-bottom: 34px
+        margin-top: 44px;
+        margin-bottom: 34px
     }
 
     title {
-      margin-top: 31px
+        margin-top: 31px
     }
 
     title + p {
-      margin-top: 10px
+        margin-top: 10px
     }
-    
+
     iframe {
-      margin: 0;
-      margin-top: 1.5 * 16px;
+        margin: 0;
+        margin-top: 1.5 * 16px;
     }
   }
   // media screen sm end
