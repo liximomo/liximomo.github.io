@@ -40,6 +40,11 @@ highlighter: rouge
 kramdown:
    input: GFM
 
+collections:
+  showcase:
+    output: true
+    permalink: /s/:title
+
 # defa' front matter
 defaults:
   -
@@ -60,6 +65,12 @@ defaults:
     values:
       layout: "post"
       css: ["post.css"]
+
+  -
+    scope:
+      path: "_showcase"
+    values:
+      layout: "raw"
 
 # plugin
 gems:
