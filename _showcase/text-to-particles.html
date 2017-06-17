@@ -10,14 +10,16 @@ tags:  canvas, particle
   {% include head.html %}
   <style>
     html, body {
-        height: 100%;
-        margin: 0;
-        background: radial-gradient(ellipse at center, #FFFFFF 0%, #ebe9e1 100%);
-      }
-      #scene {
-        width: 100%;
-        height: 100%;
-      }
+      position: fixed;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #FFFFFF 0%, #ebe9e1 100%);
+    }
+    #scene {
+      width: 100%;
+      height: 100%;
+    }
   </style>
   <body>
     <canvas id="scene"></canvas>
