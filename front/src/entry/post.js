@@ -22,6 +22,7 @@ const headerBarHeight = headerBar.clientHeight;
 const initStyle = getComputedStyle(pageBarTitle);
 const titleTop = parseInt(initStyle.top, 10);
 const transitionDistance = titleTop - headerBarHeight + 14;
+const headerBarRevealDistance = headerHeight - headerBarHeight;
 
 // comment state
 const comment = document.querySelector('#disqus_thread');
@@ -41,6 +42,16 @@ horizenHint
     return context;
   })
   .action(({ windowY, offsetY }) => {
+    if (windowY > headerBarRevealDistance) {
+      setStyle(headerBar, {
+        background: 'inherit',
+      });
+    } else {
+      setStyle(headerBar, {
+        background: 'transparent',
+      });
+    }
+
     if(windowY > transitionDistance) {
       setStyle(pageBarTitle, {
         transform: ''

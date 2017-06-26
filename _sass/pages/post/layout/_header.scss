@@ -16,11 +16,11 @@
 .foldHeader-bar {
     width: 100%;
     height: $site-header-bar-height;
-    background: inherit;
-    background-size: 100% $site-header-height;
-    @include media-query($screen-size-sm) {
-        background-size: 100% $site-header-height / 2;
-    }
+    // background: inherit;
+    // background-size: 100% $site-header-height;
+    // @include media-query($screen-size-sm) {
+    //     background-size: 100% $site-header-height / 2;
+    // }
 
     @include transition-property(transform);
     @include transition-duration(0.3s);
