@@ -38,25 +38,42 @@
     }
 }
 
-.foldHeader-bar .title {
-    @include wrapper();
-    position: relative;
-    top: 115px;
-    font-size: 56px; // nornal 18px
-    line-height: 1.5;
-
-    &.stay {
-        top: 0;
+.foldHeader {
+    .title  {
+        @include wrapper();
         line-height: $site-header-bar-height;
         font-size: 18px;
+    }
+
+    .title.title--onBar {
+        visibility: hidden;
         margin-left: 30px;
     }
     
-    @include media-query($screen-size-sm) {
-        top: 73px;
-        margin-left: 0px;
-        padding-left: $spacing-unit/2;
-        font-size: 24px;
+    .title.title--huge {
+        font-size: 56px; // nornal 18px
+        line-height: 1.5;
+        position: absolute;
+        bottom: 42px;
+        left: 0;
+        right: 0;
+
+        @include media-query($screen-size-sm) {
+            bottom: 21px;
+            margin-left: 0px;
+            padding-left: $spacing-unit/2;
+            font-size: 24px;
+        }
+    }
+}
+
+.is-reveal {
+    .title.title--onBar {
+        visibility: visible;
+    }
+
+    .title.title--huge {
+        display: none;
     }
 }
 

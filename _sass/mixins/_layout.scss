@@ -12,7 +12,7 @@
 }
 
 @mixin wrapper() {
-    @include calc(max-width, "#{$content-width} - (#{$spacing-unit} * 2)");
+    max-width: $content-width;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     @include horizontal-center;

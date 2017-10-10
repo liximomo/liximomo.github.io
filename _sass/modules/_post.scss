@@ -1,12 +1,3 @@
-.postList {
-  margin-left: 0;
-  list-style: none;
-  > .postList-item:not(:last-child) {
-    margin-bottom: $spacing-unit;
-    border-bottom: 1px solid rgba($primary-color-lighter, 0.25);
-  }
-}
-
 .post-meta {
   font-size: $small-font-size;
   color: $grey-color;
@@ -20,7 +11,6 @@ a.post-link {
     text-decoration: none;
   }
 }
-
 
 /**
  * Posts
@@ -40,31 +30,46 @@ a.post-link {
 }
 
 .post-content {
+  position: relative;
+  word-break: break-word;
+  word-wrap: break-word;
   margin-bottom: $spacing-unit;
+  font-size: $big-font-size;
+  line-height: $base-line-height * 0.875;
 
-  hr {
-    box-sizing: content-box;
-    height: 0;
-    display: block;
-    border: 0;
-    text-align: center;
-    margin-top: 52px;
-    margin-bottom: 42px;
-    
-    &:before {
-      content: '...';
-      display: inline-block;
-      margin-left: .6em;
-      color: rgba(0,0,0,.6);
-      position: relative;
-      top: -30px;
-      font-family: Georgia,Cambria,"Times New Roman",Times,serif;
-      font-weight: 400;
-      font-style: italic;
-      font-size: 28px;
-      letter-spacing: .6em;
-    }
+  @media (min-width: $screen-size-xs) {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
   }
+
+  @media (min-width: $screen-size-sm) {
+    font-size: $big-font-size;
+    line-height: $base-line-height * 1.125;
+  }
+
+  // hr {
+  //   box-sizing: content-box;
+  //   height: 0;
+  //   display: block;
+  //   border: 0;
+  //   text-align: center;
+  //   margin-top: 52px;
+  //   margin-bottom: 42px;
+
+  //   &:before {
+  //     content: '...';
+  //     display: inline-block;
+  //     margin-left: 0.6em;
+  //     color: rgba(0, 0, 0, 0.6);
+  //     position: relative;
+  //     top: -30px;
+  //     font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+  //     font-weight: 400;
+  //     font-style: italic;
+  //     font-size: 28px;
+  //     letter-spacing: 0.6em;
+  //   }
+  // }
 
   h1 {
     font-size: 2 * 16px;
@@ -110,161 +115,175 @@ a.post-link {
   }
 
   p {
-    margin-top: 38px
+    margin-top: 38px;
   }
 
   blockquote + p,
   p + p,
-  .postList + p {
-    margin-top: 29px
+  ol + p,
+  ul + p {
+    margin-top: 29px;
   }
 
   h2 + p {
-    margin-top: 18px
+    margin-top: 18px;
   }
 
   h3 + p {
-    margin-top: 8px
+    margin-top: 8px;
   }
 
   h4 + p {
-    margin-top: 6px
+    margin-top: 6px;
   }
 
   blockquote {
-    margin-top: 38px
+    margin-top: 38px;
   }
 
   blockquote + blockquote {
     margin-top: 0;
-    padding-top: 27px
+    padding-top: 27px;
   }
 
   p + blockquote,
-  .postList + blockquote {
-    margin-top: 29px
+  ul + blockquote,
+  ol + blockquote {
+    margin-top: 29px;
   }
 
   h2 + blockquote {
-    margin-top: 18px
+    margin-top: 18px;
   }
 
   h3 + blockquote {
-    margin-top: 12px
+    margin-top: 12px;
   }
 
   h4 + blockquote {
-    margin-top: 10px
+    margin-top: 10px;
   }
 
-  .postList {
-    margin-top: 38px
+  ol,
+  ul {
+    margin-top: 38px;
   }
 
-  blockquote + .postList,
-  p + .postList,
-  .postList + .postList {
-    margin-top: 29px
+  blockquote + ol,
+  blockquote + ul,
+  p + ol,
+  p + ul,
+  ul + ol,
+  ol + ul {
+    margin-top: 29px;
   }
 
-  h2 + .postList {
-    margin-top: 18px
+  h2 + ol,
+  h2 + ul {
+    margin-top: 18px;
   }
 
-  h3 + .postList {
-    margin-top: 12px
+  h3 + ol,
+  h3 + ul {
+    margin-top: 12px;
   }
 
-  h4 + .postList {
-    margin-top: 10px
+  h4 + ol,
+  h4 + ul {
+    margin-top: 10px;
   }
 
   h2 {
-    margin-top: 63px
+    margin-top: 63px;
   }
 
   blockquote + h2,
   p + h2,
-  .postList + h2 {
-    margin-top: 54px
+  ol + h2,
+  ul + h2 {
+    margin-top: 54px;
   }
 
   h3 {
-    margin-top: 53px
+    margin-top: 53px;
   }
 
   blockquote + h3,
   p + h3,
-  .postList + h3 {
-    margin-top: 56px
+  ol + h3,
+  ul + h3 {
+    margin-top: 56px;
   }
 
   h2 + h3 {
-    margin-top: 1px
+    margin-top: 1px;
   }
 
   h4 + h3 {
-    margin-top: 31px
+    margin-top: 31px;
   }
 
   h4 {
-    margin-top: 39px
+    margin-top: 39px;
   }
 
   blockquote + h4,
   p + h4,
-  .postList + h4 {
-    margin-top: 30px
+  ol + h4,
+  ul + h4 {
+    margin-top: 30px;
   }
 
   h2 + h4 {
-    margin-top: 3px
+    margin-top: 3px;
   }
 
   h3 + h4 {
-    margin-top: 31px
+    margin-top: 31px;
   }
 
   title {
-    margin-top: 39px
+    margin-top: 39px;
   }
 
   title + p {
-    margin-top: 10px
+    margin-top: 10px;
   }
 
-
-  figure, pre {
-    margin-top: 52px
+  figure,
+  pre {
+    margin-top: 52px;
   }
 
   blockquote + figure,
   p + figure,
   blockquote + pre,
   p + pre,
-  .postList + figure,
-  .postList + pre {
-    margin-top: 43px
+  ol + figure,
+  ul + figure,
+  ol + pre,
+  ul + pre {
+    margin-top: 43px;
   }
 
   h2 + figure,
   h2 + pre {
-    margin-top: 46px
+    margin-top: 46px;
   }
 
   h3 + figure,
   h3 + pre {
-    margin-top: 44px
+    margin-top: 44px;
   }
 
   h4 + figure,
   h4 + pre {
-    margin-top: 44px
+    margin-top: 44px;
   }
 
   hr {
     margin-top: 52px;
-    margin-bottom: 42px
+    margin-bottom: 42px;
   }
 
   iframe {
@@ -272,203 +291,295 @@ a.post-link {
     margin-top: 1.5 * 16px;
   }
 
+  //== custom
+
+  blockquote {
+    border-left: 3px solid rgba(0,0,0,.8);
+    padding-left: 20px;
+    padding-bottom: 2px;
+  
+    font-weight: 400;
+    font-style: italic;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+  
+    code {
+      background: rgba(0,0,0,.05);
+      padding: 3px 4px;
+      margin: 0 2px;
+  
+      font-size: 16px;
+      font-style: normal;
+    }
+  }
+
+  // divide
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    display: block;
+    border: 0;
+    text-align: center;
+    overflow: visible;
+
+    &:before {
+      content: '...';
+      display: inline-block;
+      margin-left: 0.6 * 16px;
+      color: rgba(0, 0, 0, 0.6);
+      position: relative;
+      top: -30px;
+      font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 28px;
+      letter-spacing: 0.6 * 16px;
+    }
+  }
+
+
+
+  ol > li,
+  ul > li {
+    margin-left: 30px;
+    margin-bottom: 14px;
+
+    &:before {
+      position: absolute;
+      width: 70px;
+      left: -39px;
+      text-align: right;
+      display: inline-block;
+    }
+
+    p {
+      margin: 0;
+      display: inline-block;
+    }
+  }
+
+  ul > li:before {
+    padding-right: 15px;
+    content: '•';
+  }
+
+  ol > li:before {
+    font-feature-settings: 'liga' on, 'lnum' on;
+    padding-right: 12px;
+    counter-increment: post;
+    content: counter(post) '.';
+  }
 
   // media screen sm start
   @include media-query($screen-size-sm) {
     h1 {
-        font-size: 2 * 16px * 0.85;
+      font-size: 2 * 16px * 0.85;
     }
 
     h2 {
-        font-size: 1.75 * 16px * 0.85;
+      font-size: 1.75 * 16px * 0.85;
     }
 
     h3 {
-        font-size: 1.25 * 16px * 0.85;
+      font-size: 1.25 * 16px * 0.85;
     }
 
     h4 {
-        font-size: 1.15 * 16px * 0.85;
+      font-size: 1.15 * 16px * 0.85;
     }
 
     h5 {
-        font-size: 1 * 16px * 0.85;
+      font-size: 1 * 16px * 0.85;
     }
 
     h6 {
-        font-size: 1 * 16px;
-        font-size: 1 * 16px * 0.85;
+      font-size: 1 * 16px;
+      font-size: 1 * 16px * 0.85;
     }
 
     p {
-        margin-top: 30px
+      margin-top: 30px;
     }
 
     blockquote + p,
     p + p,
-    .postList + p {
-        margin-top: 21px
+    ol + p,
+    ul + p {
+      margin-top: 21px;
     }
 
     h2 + p {
-        margin-top: 14px
+      margin-top: 14px;
     }
 
     h3 + p {
-        margin-top: 8px
+      margin-top: 8px;
     }
 
     h4 + p {
-        margin-top: 6px
+      margin-top: 6px;
     }
 
     blockquote {
-        margin-top: 30px
+      margin-top: 30px;
     }
 
     blockquote + blockquote {
-        margin-top: 0;
-        padding-top: 19px
+      margin-top: 0;
+      padding-top: 19px;
     }
 
     p + blockquote,
-    .postList + blockquote {
-        margin-top: 21px
+    ul + blockquote,
+    ol + blockquote {
+      margin-top: 21px;
     }
 
     h2 + blockquote {
-        margin-top: 14px
+      margin-top: 14px;
     }
 
     h3 + blockquote {
-        margin-top: 8px
+      margin-top: 8px;
     }
 
     h4 + blockquote {
-        margin-top: 6px
+      margin-top: 6px;
     }
 
-    .postList {
-        margin-top: 30px
+    ul, ol {
+      margin-top: 30px;
     }
 
-    blockquote + .postList,
-    p + .postList,
-    .postList + .postList {
-        margin-top: 21px
+    blockquote + ol,
+    blockquote + ul,
+    p + ol,
+    p + ul,
+    ul + ol,
+    ol + ul {
+      margin-top: 21px;
     }
 
-    h2 + .postList {
-        margin-top: 14px
+    h2 + ol,
+    h2 + ul {
+      margin-top: 14px;
     }
 
-    h3 + .postList {
-        margin-top: 8px
+    h3 + ol,
+    h3 + ul  {
+      margin-top: 8px;
     }
 
-    h4 + .postList {
-        margin-top: 6px
+    h4 + ol,
+    h4 + ul {
+      margin-top: 6px;
     }
 
     h2 {
-        margin-top: 35px
+      margin-top: 35px;
     }
 
     blockquote + h2,
     p + h2,
-    .postList + h2 {
-        margin-top: 26px
+    ol + h2,
+    ul + h2 {
+      margin-top: 26px;
     }
 
     h3 + h2 {
-        margin-top: -3px
+      margin-top: -3px;
     }
 
     h4 + h2 {
-        margin-top: -3px
+      margin-top: -3px;
     }
 
     h3 {
-        margin-top: 45px
+      margin-top: 45px;
     }
 
     blockquote + h3,
     p + h3,
-    .postList + h3 {
-        margin-top: 28px
+    ol + h3,
+    ul + h3 {
+      margin-top: 28px;
     }
 
     h2 + h3 {
-        margin-top: 1px
+      margin-top: 1px;
     }
 
     h4 + h3 {
-        margin-top: 23px
+      margin-top: 23px;
     }
 
     h4 {
-        margin-top: 31px
+      margin-top: 31px;
     }
 
     blockquote + h4,
     p + h4,
-    .postList + h4 {
-        margin-top: 22px
+    ol + h4,
+    ul + h4 {
+      margin-top: 22px;
     }
 
     h2 + h4 {
-        margin-top: 3px
+      margin-top: 3px;
     }
 
     h3 + h4 {
-        margin-top: 23px
+      margin-top: 23px;
     }
 
     figure,
     pre {
-        margin-top: 44px
+      margin-top: 44px;
     }
 
     blockquote + figure,
     p + figure,
     blockquote + pre,
     p + pre,
-    .postList + figure,
-    .postList + pre {
-        margin-top: 35px
+    ol + figure,
+    ul + figure,
+    ol + pre,
+    ul + pre  {
+      margin-top: 35px;
     }
 
     h2 + figure,
     h2 + pre {
-        margin-top: 38px
+      margin-top: 38px;
     }
 
     h3 + figure,
     h3 + pre {
-        margin-top: 36px
+      margin-top: 36px;
     }
 
     h4 + figure,
     h4 + pre {
-        margin-top: 36px
+      margin-top: 36px;
     }
 
     hr {
-        margin-top: 44px;
-        margin-bottom: 34px
+      margin-top: 44px;
+      margin-bottom: 34px;
     }
 
     title {
-        margin-top: 31px
+      margin-top: 31px;
     }
 
     title + p {
-        margin-top: 10px
+      margin-top: 10px;
     }
 
     iframe {
-        margin: 0;
-        margin-top: 1.5 * 16px;
+      margin: 0;
+      margin-top: 1.5 * 16px;
     }
   }
   // media screen sm end

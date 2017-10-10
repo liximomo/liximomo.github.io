@@ -16,6 +16,7 @@
     &--affixed {
         position: fixed;
         top: 0;
+        z-index: $zindex-navbar-fixed;
         @include transform(translate3D(0, 0, 0));
 
         &.is-hidden{

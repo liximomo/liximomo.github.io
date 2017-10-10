@@ -16,10 +16,10 @@ new Popover('.post', 'tooltip', {
 
 const siteHeader = document.querySelector('#siteHeader');
 const headerBar = document.querySelector('#headerBar');
-const pageBarTitle = document.querySelector('#barTitle');
+const hugeTitle = document.querySelector('#hugeTitle');
 const headerHeight = siteHeader.clientHeight;
 const headerBarHeight = headerBar.clientHeight;
-const initStyle = getComputedStyle(pageBarTitle);
+const initStyle = getComputedStyle(hugeTitle);
 const titleTop = parseInt(initStyle.top, 10);
 const transitionDistance = titleTop - headerBarHeight + 14;
 const headerBarRevealDistance = headerHeight - headerBarHeight;
@@ -53,15 +53,17 @@ horizenHint
     }
 
     if(windowY > transitionDistance) {
-      setStyle(pageBarTitle, {
-        transform: ''
-      });
-      pageBarTitle.classList.add('stay');
+      siteHeader.classList.add('is-reveal');
+      // setStyle(pageBarTitle, {
+      //   transform: ''
+      // });
+      // pageBarTitle.classList.add('stay');
     } else {
-      setStyle(pageBarTitle, {
-        transform: `translate3D(0, -${windowY}px, 0)`
-      });
-      pageBarTitle.classList.remove('stay');
+      siteHeader.classList.remove('is-reveal');
+      // setStyle(pageBarTitle, {
+      //   transform: `translate3D(0, -${windowY}px, 0)`
+      // });
+      // pageBarTitle.classList.remove('stay');
     }
   })
   .action(({ windowY, offsetY }) => {
