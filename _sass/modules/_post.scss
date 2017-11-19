@@ -17,6 +17,7 @@ a.post-link {
  */
 
 .post-header {
+  text-transform: capitalize;
   margin-bottom: $spacing-unit;
 }
 
@@ -72,29 +73,29 @@ a.post-link {
   // }
 
   h1 {
-    font-size: 2 * 16px;
+    font-size: 2 * $big-font-size;
   }
 
   h2 {
-    font-size: 1.75 * 16px;
+    font-size: 1.75 * $big-font-size;
   }
 
   h3 {
-    font-size: 1.25 * 16px;
+    font-size: 1.25 * $big-font-size;
   }
 
   h4 {
-    font-size: 1.15 * 16px;
+    font-size: 1.15 * $big-font-size;
   }
 
   h5 {
-    font-size: 1 * 16px;
+    font-size: 1 * $big-font-size;
   }
 
   h6 {
-    margin-top: 1 * 16px;
-    font-size: 1 * 16px;
-    color: color('stealthy');
+    margin-top: 1 * $big-font-size;
+    font-size: 1 * $big-font-size;
+    color: #aaa;
   }
 
   h1,
@@ -374,28 +375,28 @@ a.post-link {
   // media screen sm start
   @include media-query($screen-size-sm) {
     h1 {
-      font-size: 2 * 16px * 0.85;
+      font-size: 2 * $big-font-size * 0.85;
     }
 
     h2 {
-      font-size: 1.75 * 16px * 0.85;
+      font-size: 1.75 * $big-font-size * 0.85;
     }
 
     h3 {
-      font-size: 1.25 * 16px * 0.85;
+      font-size: 1.25 * $big-font-size * 0.85;
     }
 
     h4 {
-      font-size: 1.15 * 16px * 0.85;
+      font-size: 1.15 * $big-font-size * 0.85;
     }
 
     h5 {
-      font-size: 1 * 16px * 0.85;
+      font-size: 1 * $big-font-size * 0.85;
     }
 
     h6 {
-      font-size: 1 * 16px;
-      font-size: 1 * 16px * 0.85;
+      font-size: 1 * $big-font-size;
+      font-size: 1 * $big-font-size * 0.85;
     }
 
     p {

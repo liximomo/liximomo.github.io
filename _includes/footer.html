@@ -29,3 +29,6 @@
   </div>
 
 </footer>
+{% for js in page.js %}
+  {% include helper/script src=js %}
+{% endfor %}

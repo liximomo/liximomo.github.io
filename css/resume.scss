@@ -1,0 +1,84 @@
+---
+---
+
+@charset "utf-8";
+
+@import 
+    "theme/default",
+    "mixin"
+;
+
+.siteHeader,
+.site-footer {
+  display: none;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+h4::before {
+  content: "#";
+  color: #9E9E9E;
+  margin-right: 2px;
+}
+
+.boxWithWidth {
+  display: inline-block;
+}
+
+.sectionLayout--info {
+  dl {
+    margin-top: 38px;
+
+     @include media-query($screen-size-sm) {
+       margin-top: 30px;
+    }
+  }
+
+  dt, dd {
+    display: inline;
+    margin: 0;
+    line-height: 2.8em;
+  }
+
+  dt::after {
+    content: "：";
+  }
+
+  dd {
+    font-weight: 600;
+  }
+
+  dd + dt::before {
+    content: "\A";
+    white-space: pre;
+  }
+
+  dt > .boxWithWidth {
+    width: 5em;
+    text-align: right;
+  }
+}
+
+.print-page-break {
+  display: none;
+}
+
+@media print {
+  .print-page-break {
+    display: block;
+    page-break-before: always;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
+
+
+
