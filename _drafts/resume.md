@@ -3,6 +3,8 @@ title: "程序人生"
 layout: page
 permalink: /resume
 css: ["resume.css"]
+excerpt: >
+  简历
 ---
 
 <section class="sectionLayout sectionLayout--info">
