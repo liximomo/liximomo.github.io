@@ -339,7 +339,9 @@ a.post-link {
     }
   }
 
-
+  ol {
+    counter-reset: olItem;
+  }
 
   ol > li,
   ul > li {
@@ -368,8 +370,8 @@ a.post-link {
   ol > li:before {
     font-feature-settings: 'liga' on, 'lnum' on;
     padding-right: 12px;
-    counter-increment: post;
-    content: counter(post) '.';
+    counter-increment: olItem;
+    content: counter(olItem) '.';
   }
 
   // media screen sm start

@@ -3,12 +3,12 @@
 {% assign m = include.date | date: "%-m" %}
 {% assign w = include.date | date: "%-w" %}
 {% case w %}
-  {% when '0' %}{% assign w = "星期一" %}
-  {% when '1' %}{% assign w = "星期二" %}
-  {% when '2' %}{% assign w = "星期三" %}
-  {% when '3' %}{% assign w = "星期四" %}
-  {% when '4' %}{% assign w = "星期五" %}
-  {% when '5' %}{% assign w = "星期六" %}
-  {% when '6' %}{% assign w = "星期日" %}
+  {% when '0' %}{% assign w = "星期日" %}
+  {% when '1' %}{% assign w = "星期一" %}
+  {% when '2' %}{% assign w = "星期二" %}
+  {% when '3' %}{% assign w = "星期三" %}
+  {% when '4' %}{% assign w = "星期四" %}
+  {% when '5' %}{% assign w = "星期五" %}
+  {% when '6' %}{% assign w = "星期六" %}
   {% endcase %}
 {{ y }}年 {{ m }}月{{ d }}日 {{ w }}
