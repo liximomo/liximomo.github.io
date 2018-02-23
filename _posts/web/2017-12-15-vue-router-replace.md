@@ -2,9 +2,8 @@
 title:  "vue-router 高级路由设计"
 date:   2017-12-15 13:56:00 +0800
 tags:  vue vue-router
-layout: post
 excerpt: >
-  vue-router 中”route“层级和”组件“层级不一致的解决方案。
+  vue-router 中“路由”层级和“组件”层级不一致的解决方案。
 ---
 
 ## 场景
@@ -93,7 +92,7 @@ export default function routeReplaceSelf(component) {
 工作示例：
 <iframe src="https://codesandbox.io/embed/wnzmv22ww8?autoresize=1&hidenavigation=1" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-还有一个小问题，当从子路由返回父组件时，父组件会重新 `mount`。这里可以借助 ’keep-alive‘ 来缓存组件避免不必要的`mount`。
+还有一个小问题，当从子路由返回父组件时，父组件会重新 `mount`。这里可以借助 `keep-alive` 来缓存组件避免不必要的 `mount`。
 
 ```js
 render(h) {
@@ -102,12 +101,14 @@ render(h) {
 },
 ```
 
-## 总结
-`render` 方法很强大，借助它可以实现很多高级模式，搭配 vnode 效果更佳。
-
-## 题外话
+## 思考
 在解决上述问题时，尤大在相关 [issue](https://github.com/vuejs/vue-router/issues/745#issuecomment-263410514) 内说到
 
 > I think this breaks the relationship between route config nesting and router-view nesting and can make things a bit harder to reason about.
 
-对此觉得很是遗憾，对比 `react-router`，在吸收了大量的反馈后，通过 v4  重新定义了 `router` 的本质 -- 一个 `path matcher`，这种情况下层级只是它的一种具体使用方式。推荐 [page stack](http://tech.colla.me/zh/show/line_manga_smooth_transition_with_page_stack)，解锁 `router` 新姿势。
+对此我是不认可的，强制路由层级和组件层级匹配，这样做增强了二者的耦合性。对路由本身而言它是没有组件这个感念的，毕竟它的名字就叫路由，而不是组件路由，页面路由。路由本身只应作为一个工具，告诉我们当前的 url 是否和其相定义相匹配，之后具体是路由到一个页面，一个组件，还是一个简单的回调则应由用户去控制。
+
+对比 `react-router` (v4)， 正真意义上实现了 `router` 的本质 —— pattern matcher，借助其我们可以完成很多复杂的需求。这里推荐一下 [page stack](http://tech.colla.me/zh/show/line_manga_smooth_transition_with_page_stack) 这篇文章。
+
+## 结语
+熟悉 vue 中 `render` 方法以及 `vnode`, 在很多场景下，我们都需要借助他们来实现需求。
