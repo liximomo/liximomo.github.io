@@ -1,6 +1,6 @@
 ---
 title:  "JavaScript 闭包"
-date:   2017-08-2 +0800
+date:   2017-08-02 +0800
 tags:  JavaScript closure
 layout: post
 excerpt: >
