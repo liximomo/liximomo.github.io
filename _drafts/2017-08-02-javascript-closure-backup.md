@@ -4,31 +4,30 @@ date:   2017-08-02 +0800
 tags:  JavaScript closure
 layout: post
 excerpt: >
-  函数在 JavaScript 中被作为 first-class citizens 对待，这通常是函数式编程语言的基础。闭包作为在函数式编程语言中经常使用的技术，也成为了 JavaScript 中不可或缺的强大工具。闭包因何而存在？在 JavaScript 中闭包又是如何实现的？
+  函数在 JavaScript 中被作为 first-class citizens 对待，这通常是函数式编程语言的基础。闭包作为在函数式编程语言中经常使用的技术，也成为了 JavaScript 中不可或缺的强大工具。
 ---
 
-## 引言
-这篇文章会以追根溯源的方式讲解释闭包的概念，弄清楚闭包因何而存在，在 JavaScript 中闭包又是如何实现的。
+## 定义
+JavaScript 中函数是 [First-class function](https://en.wikipedia.org/wiki/First-class_function), 这是函数式语言，也是闭包的基础。什么是闭包呢？我们可以这样去理解：
 
-## 概念
+```
+函数 + 函数创建时的环境 = 闭包
+```
 
-### Free variable（自由变量）
-我们先来解释一下什么是 free variable:
+### 环境
+一个函数的环境分为“调用时环境”和“创建时环境”，当一个函数要和环境绑定时，应该采用哪个呢？在 JavaScript 中是创建时环境，这主要是因为 JavaScript 采用了 static scope（静态范围）。
+
+> **Static scope:** 如果可以仅凭查看源代码就可以决定解析一个变量所使用的环境，就说这个语言实现了静态范围。
+
+Static scope 有时也被称为 lexical scope（词法范围）。
+
+技术上来说，static scope 是通过捕捉函数创建时的环境来实现的。
+
+### 闭包
+通常人们对闭包的理解是不完全的，认为只有嵌入的函数才是闭包。但其实任何拥有 free variable（自由变量）的函数都是以闭包的形式存在的。更确切的说，闭包是 free variable 问题（如何解析 free variable）的一种解决方案。
 
 > **Free variable:** 一个变量，既不是函数参数，也不是函数的本地变量，则称为 free variable。
 
-示例1：
-
-```js
-let x = 10;
- 
-function foo() {
-  console.log(x);
-}
-```
-
-对 `foo` 函数来说，变量 x 就是一个 free variable。拥有了 free variable 的函数会面临一个问题——如何解析此类变量。
-
 ```js
 let x = 10;
  
@@ -36,18 +35,18 @@ function foo() {
   console.log(x);
 }
  
-function bar() {
+function bar(funArg) {
   let x = 20;
-  foo(); // 10, 而不是 20!
+  funArg(); // 10, 而不是 20!
 }
-
-bar();
+ 
+// 将 `foo` 最为参数传给 `bar`.
+bar(foo);
 ```
 
-上述代码中，`foo` 函数中的 `x` 变量是解析到 10 还是 20？要回答这个问题，我们要弄清楚几个和函数相关的环境。
+对 foo 函数来说，变量 x 就是一个 free variable。单靠 foo 函数的定义本身，是无法解析 x 变量的，我们还需将 x 所在的环境保存下来，才可以解析变量 x。另一方面，由于使用了创建时环境，foo 虽然是在 bar 中被调用的，并且 bar 的环境中提供了 foo 所依赖的变量 x（20），但 foo 中的 x 依然解析到了其所处的创建时环境中，也即是10。
 
-### 环境
-一个函数的环境分为**调用时环境**和**创建时环境**。调用时环境是动态的，随着程序的运行有着不确定性，创建时环境是静态的，我们可以通过观察代码就确定环境的范围。示例1中的环境可以用伪代码描述为：
+我们可以通过伪代码来表示上述示例中所有的环境：
 
 ```js
 globalEnvironment = {
@@ -63,25 +62,7 @@ fooCallEnvironment = {
 };
 ```
 
-我们依赖函数的定义本身是无法确定 free variable 的值如何解析，要解决这个问题，我们可以将环境和函数关联起来，利用与函数相关联的环境中去查找解析变量。这样做会引出一个新的问题，是选择调用时环境还是创建时环境来关联函数呢？在 JavaScript 中是**创建时环境**，这主要是因为 JavaScript 采用了 **static scope（静态范围）**。
-
-> **Static scope:** 如果可以仅凭查看源代码就可以决定解析一个变量所使用的环境，就说这个语言实现了静态范围。
-
-Static scope 有时也被称为 lexical scope（词法范围）。
-
-技术上来说，static scope 是通过捕捉函数创建时的环境来实现的。
-
-## 闭包
-当我们将函数和函数创建时的环境关联起来，就形成了 free variable 的一种解决方案。我们把此称为闭包：
-
-```
-函数 + 函数创建时的环境 = 闭包
-```
-
-通常人们对闭包的理解是不完全的，认为在 JavaScript 中只有嵌入的函数才是闭包。但其实任何拥有 free variable（自由变量）的函数都是以闭包的形式存在的。因为本质上，闭包是 free variable 问题的一种解决方案。
-
-我们来看看 JavaScript 中典型的闭包，示例2：
-
+我们来看看另一种更典型的闭包：
 ```js
 function foo() {
   let x = 10;
@@ -104,9 +85,9 @@ let bar = foo();
 bar(); // 10, not 20!
 ```
 
-技术上来将，示例2中的 `bar` 函数和示例1的 `foo` 函数并没有区别，都是保存了函数创建时所处的环境。
+从技术上来说，它和第一种并没有区别，都是保存了创建时所处的环境。
 
-值得一提的是，同一个环境可以被多个闭包共享。这使我们可以访问和修改共享范围内的数据，示例3：
+值得一提的是，同一个环境可以被多个闭包共享。这使我们可以访问和修改共享的数据：
 
 ```js
 function createCounter() {
@@ -127,7 +108,7 @@ console.log(
 );
 ```
 
-示例3中的两个闭包（increment 和 decrement）都创建于一个包含 count 变量的代码块（范围）内，它们共享着父环境的引用。用伪代码描述为：
+示例中的两个闭包（increment 和 decrement）都创建于一个包含 count 变量的代码块（范围）内，它们共享着父环境的引用。用伪代码来表示成：
 
 ```js
 counterEnvironment = {
@@ -227,6 +208,3 @@ console.log(people2.greeting()); // Hi! I am Bob.
 ```
 
 这次我们通过同一个 `makePeople` 函数创建了两个 people, 但是 `people1` 和 `people2` 都保存着各自独立的私有成员，互不干扰。这是因为每次 `makePeople` 执行时，都会创建一个新的环境，所以两次创建的 people 关联着不同的环境（`people1` 和 `people2` 互相独立），但是同一个 people 内的闭包（`changeName` 和 `greeting`）都共享同一个环境。
-
-## 总结
-这篇文章从一个问题出发，探索解决之道，结合 JavaScript 中的闭包实现，以理论的形式来阐述闭包的概念。希望可以帮助大家更容易的理解闭包。
