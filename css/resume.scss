@@ -8,12 +8,23 @@
     "mixin"
 ;
 
-.siteHeader,
-.site-footer {
-  display: none;
+:root {
+  --primary-color: #204C7D;
+  --text-color: #333333;
+  --accent-color1: #8f8f8f;
+  --accent-color2: #b3b3b3;
+}
+
+body {
+  color: var(--text-color);
+}
+
+h1 {
+  color: var(--primary-color);
 }
 
 h2 {
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -27,42 +38,168 @@ h4::before {
   margin-right: 2px;
 }
 
-.boxWithWidth {
-  display: inline-block;
+bold,
+.bold {
+  font-weight: 500;
 }
 
-.sectionLayout--info {
-  dl {
-    margin-top: 38px;
+p + p  {
+  margin-top: 5px !important;
+}
 
-     @include media-query($screen-size-sm) {
-       margin-top: 30px;
-    }
-  }
+.accent1 {
+  color: var(--accent-color1) !important;
+}
 
-  dt, dd {
-    display: inline;
-    margin: 0;
-    line-height: 2.8em;
-  }
+.accent2 {
+  color: var(--accent-color2) !important;
+}
 
-  dt::after {
-    content: "：";
-  }
+a:visited {
+  color: #1DE9B6;
+}
 
-  dd {
-    font-weight: 600;
-  }
+.u-marginTop0 {
+  margin-top: 0 !important;
+}
 
-  dd + dt::before {
-    content: "\A";
-    white-space: pre;
-  }
+.u-marginTop5 {
+  margin-top: 5px !important;
+}
 
-  dt > .boxWithWidth {
-    width: 5em;
-    text-align: right;
-  }
+.siteHeader,
+.site-footer,
+.post-header {
+  display: none;
+}
+
+.wrapper {
+  max-width: 1100px;
+  width: 1100px;
+}
+
+.info {
+  line-height: 1;
+  display: flex;
+}
+
+.person {
+  flex: 1 1 auto;
+  padding-right: 20%;
+}
+
+.name {
+  color: var(--primary-color);
+  font-size: 44px;
+  font-weight: 500;
+}
+
+.intro {
+  font-size: 29px;
+  color: var(--primary-color);
+  margin-top: 20px;
+}
+
+.basicInfo {
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+.basicInfoItem + .basicInfoItem {
+  margin-top: 12px;
+}
+
+.basicInfoItem a,
+.basicInfoItem a:hover,
+.basicInfoItem a:active,
+.basicInfoItem a:visited {
+  color: inherit;
+}
+
+.moreOnGithub {
+  margin-top: 12px !important;
+  font-weight: 600;
+}
+
+.moreOnGithub a,
+.moreOnGithub a:hover,
+.moreOnGithub a:active,
+.moreOnGithub a:visited {
+  color: inherit;
+}
+
+
+.basicInfoItem bold {
+  font-weight: 700;
+}
+
+.mainContent {
+  margin-top: 30px;
+}
+
+.mainContent > .col:last-child .timeRange {
+  margin-bottom: 3px;
+}
+
+.categoryName {
+  text-transform: uppercase;
+  margin-top: 55px;
+  text-align: center;
+  color: #6d6d6d;
+  font-weight: 500;
+}
+
+.categoryContent {
+  margin-top: 15px;
+}
+
+.sectionTitle {
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-size: 28px;
+  color: var(--primary-color);
+  font-weight: bold;
+  display: flex;
+  align-items: flex-end;
+}
+
+.sectionTitle span {
+  flex: 1 1 auto;
+}
+
+.sectionTitle + p {
+  margin-top: 0;
+}
+
+.sectionTitle .timeRange {
+  flex: 0 0 auto ;
+  font-size: 24px;
+  color: var(--accent-color1);
+  font-weight: normal;
+}
+
+.titleWithMeta {
+  display: flex;
+  align-items: flex-end;
+}
+
+.titleWithMeta span:first-child{
+  flex: 1 1 auto;
+}
+
+.titleWithMeta span:last-child{
+  flex: 0 0 auto;
+}
+
+.footer {
+  margin-top: 15px;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.boxWithWidth {
+  display: inline-block;
 }
 
 .print-page-break {
