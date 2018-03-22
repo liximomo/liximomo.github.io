@@ -56,7 +56,7 @@ observer.observe({entryTypes: ['paint']});
 
 这个 polyfill 提供了 `getFirstConsistentlyInteractive()` 方法, 这个方法返回一个解析值为 TTI 值的 `promise`。我么可以这样来监测 TTI:
 
-```js
+```javascript
 import ttiPolyfill from 'tti-polyfill';
 
 ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
@@ -67,7 +67,7 @@ ttiPolyfill.getFirstConsistentlyInteractive().then((tti) => {
 ### Long tasks
 可以通过创建一个 `PerformanceObserver` 实例来观测 longtask。Long task entries 包含一个 [attribution property](https://w3c.github.io/longtasks/#sec-TaskAttributionTiming), 我们可以很简单的追踪到造成 long tasks 的代码:
 
-```js
+```javascript
 const observer = new PerformanceObserver((list) => {
   for (const entry of list.getEntries()) {
     console.log(Math.round(entry.startTime), Math.round(entry.duration), JSON.stringify(entry.attribution))
@@ -84,7 +84,7 @@ observer.observe({entryTypes: ['longtask']});
 
 输入延迟应该低于 100ms, 我们可以通过比较事件时间戳和当前时间来检测 Input latency。
 
-```js
+```javascript
 const subscribeBtn = document.querySelector('#subscribe');
 
 subscribeBtn.addEventListener('click', (event) => {
@@ -131,7 +131,7 @@ document.addEventListener('visibilitychange', window.__trackAbandons);
 
 同时，我们还要确保页面可以交互时移除这个事件监听器。
 
-```js
+```javascript
 document.removeEventListener('visibilitychange', window.__trackAbandons);
 ```
 

@@ -19,7 +19,7 @@ excerpt: >
 
 示例1：
 
-```js
+```javascript
 let x = 10;
  
 function foo() {
@@ -29,7 +29,7 @@ function foo() {
 
 对 `foo` 函数来说，变量 x 就是一个 free variable。拥有了 free variable 的函数会面临一个问题——如何解析此类变量。
 
-```js
+```javascript
 let x = 10;
  
 function foo() {
@@ -49,7 +49,7 @@ bar();
 ### 环境
 一个函数的环境分为**调用时环境**和**创建时环境**。调用时环境是动态的，随着程序的运行有着不确定性，创建时环境是静态的，我们可以通过观察代码就确定环境的范围。示例1中的环境可以用伪代码描述为：
 
-```js
+```javascript
 globalEnvironment = {
   x: 10
 };
@@ -82,7 +82,7 @@ Static scope 有时也被称为 lexical scope（词法范围）。
 
 我们来看看 JavaScript 中典型的闭包，示例2：
 
-```js
+```javascript
 function foo() {
   let x = 10;
    
@@ -108,7 +108,7 @@ bar(); // 10, not 20!
 
 值得一提的是，同一个环境可以被多个闭包共享。这使我们可以访问和修改共享范围内的数据，示例3：
 
-```js
+```javascript
 function createCounter() {
   let count = 0;
  
@@ -129,7 +129,7 @@ console.log(
 
 示例3中的两个闭包（increment 和 decrement）都创建于一个包含 count 变量的代码块（范围）内，它们共享着父环境的引用。用伪代码描述为：
 
-```js
+```javascript
 counterEnvironment = {
   count: 0
 };
@@ -154,7 +154,7 @@ decrementClouse = {
 
 在一个项目中，我们经常需要使用各种函数来将一个参数和固定的数字相加，我们可以把每一个函数都声明出来：
 
-```js
+```javascript
 function add3(value) {
   return 3 + value;
 }
@@ -170,7 +170,7 @@ function add7(value) {
 
 如果这样的函数有很多，将它们都一一定义出来是很不现实的，借助函数工厂，我们可以这样做：
 
-```js
+```javascript
 function createAdder(augend) {
   return function adder(addend) {
     return augend + addend;
@@ -187,7 +187,7 @@ const add7 = createAdder(7);
 ### 封装私有变量和方法
 JavaScript 本身是没有原生的方式来定义私有变量和方法，但是我们可以通过闭包来模仿这种行为。私有变量和方法的好处不止在于可以限制可访问的代码，同时提供一种有效的方式来管理全局命名空间，防止非核心的变量和方法污染公共接口。
 
-```js
+```javascript
 function makePeople() {
   let privateName;
 
@@ -215,7 +215,7 @@ console.log(people.greeting()); // Hi! I am Tom.
 
 接着上面的例子：
 
-```js
+```javascript
 const people1 = makePeople();
 const people2 = makePeople();
 

@@ -10,7 +10,7 @@ excerpt: >
 
 在 vue-router 的使用中，面临了一个问题，那就是 vue-router 的正确工作是建立在 `component` 层级和 `route` 层级一致的情况下。如下路由定义:
 
-```js
+```javascript
 const route = {
   path: '/list',
   name: 'list',
@@ -25,7 +25,7 @@ const route = {
 
 `List` 组件必需在自己的模板内包含 `router-view` 组件，`detail` 路由才有机会被匹配。
 
-```js
+```javascript
 const route = {
   path: '/list',
   name: 'list',
@@ -72,7 +72,7 @@ const route = {
  
 具体实现：
 
-```js
+```javascript
 export default function routeReplaceSelf(component) {
   return {
     name: 'routerReplaceSelf',
@@ -94,7 +94,7 @@ export default function routeReplaceSelf(component) {
 
 还有一个小问题，当从子路由返回父组件时，父组件会重新 `mount`。这里可以借助 `keep-alive` 来缓存组件避免不必要的 `mount`。
 
-```js
+```javascript
 render(h) {
   const child = this.showChild ? h('router-view') : h(component);
   return h('keep-alive', [child]);

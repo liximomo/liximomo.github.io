@@ -35,10 +35,13 @@ permalink: /:title
 
 # Conversion
 markdown: kramdown
-highlighter: rouge
+# highlighter: rouge
+highlighter: none
 
 kramdown:
    input: GFM
+   syntax_highlighter_opts:
+      disable : true
 
 collections:
   showcase:
@@ -72,10 +75,10 @@ defaults:
     values:
       layout: "raw"
 
-# plugin
-gems:
-  - jemoji
-  - jekyll-github-metadata
+# # plugin
+# gems:
+#   - jemoji
+#   - jekyll-github-metadata
 
 # sass 
 sass:

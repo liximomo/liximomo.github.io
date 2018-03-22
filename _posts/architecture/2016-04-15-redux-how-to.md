@@ -25,7 +25,7 @@ State 描述一个应用程序的全部状态，当我们设计应用程序时�
 
 所有需要控制的状态都应设计到 state 对象中。一个 Todo App 的状态看起来是这个样子
 
-```js
+```javascript
 {
   todos: [
     {
@@ -50,7 +50,7 @@ State 描述一个应用程序的全部状态，当我们设计应用程序时�
 
 在上述定义的基础上，我们想添加一个搜索功能。这时候 state 看起来是这个样子的
 
-```js
+```javascript
 state = {
   searchText: 'redux',
   todos: [
@@ -67,7 +67,7 @@ Action 用来描述一个行为，并负载相应的信息。
 
 比如我们在一个 Todo App 中， 我们可以这样定义新增 action
 
-```js
+```javascript
 const ADD_TODO = 'ADD_TODO'
 
 let action = {
@@ -94,7 +94,7 @@ Reducer 接收两个参数，第一个参数是当前状态，而第二参数是
 
 现在让我们定义一个 reducer 来处理 action。
 
-```js
+```javascript
 function todoApp(state = [], action) { 
   switch (action.type) { //上面定义的 action =  { type: ADD_TODO, text: '学习redux' }
     case ADD_TODO:
@@ -116,7 +116,7 @@ function todoApp(state = [], action) {
 
 Store 是管理应用程序 state 的容器，连接之前介绍的各个部分，定义如下
 
-```js
+```javascript
 type Store = {
   dispatch: Dispatch
   getState: () => State
@@ -144,12 +144,12 @@ redux 的流程非常简单，这使我们的逻辑可以很清晰简洁。通�
 
 Couter 的 state 很简单, 只有一个状态来指示计数器的值
 
-```js
+```javascript
  state = 0; //初始为0
 ```
 Counter 需要有增加和减少两个操作，这是我们的 action
 
-```js
+```javascript
 {
   type: 'INCREMENT',
 }
@@ -161,7 +161,7 @@ Counter 需要有增加和减少两个操作，这是我们的 action
 
 然后我们需要一个 reducer 来处理 action
 
-```js
+```javascript
 function counterReducer(state = 0, action) {
   switch (action.type) {
     case 'INCREMENT':
@@ -176,7 +176,7 @@ function counterReducer(state = 0, action) {
 
 接下来显示计数器的数值
 
-```js
+```javascript
 let counter = document.getElementById('count');
 
 function render() {
@@ -186,7 +186,7 @@ function render() {
 
 嗯，非常简单是不是，然后让我们用 redux 把这几部分连接起来
 
-```js
+```javascript
 var store = Redux.createStore(counterReducer); // 完整api用法请参考文档
 
 store.subscribe(render);
@@ -212,7 +212,7 @@ store.dispatch({
 
 这时候我们的 state 应该可以表示两个计数器的状态
 
-```js
+```javascript
   let initState = {
     countOne: 0,
     countTwo: 0 
@@ -221,7 +221,7 @@ store.dispatch({
 
 再看下我们的 reducer 变成什么样了
 
-```js
+```javascript
 function counterReducer(state = initState, action) {
   switch (action.type) {
     case 'INCREMENT':
@@ -252,7 +252,7 @@ function counterReducer(state = initState, action) {
 
 他就是 `combineReducers`!
 
-```js
+```javascript
 function alwaysEqOneReducer(state, action) {
   return 1;
 }
@@ -273,7 +273,7 @@ let state = rootReducer(curState, someAction);
 
 利用 `combineReducers` 我们可以重用之前的 reducer
 
-```js
+```javascript
 let rootReducer = combineReducers({
       countOne: counterReducer,
       countTwo: counterReducer
@@ -303,7 +303,7 @@ let store = Redux.createStore(rootReducer);
 
 我们要做的就是使一个 reducer 只处理指定了自己为目标的 action。
 
-```js
+```javascript
 /**
  * @params {String} identifier 标识符， 
  * @return {Function} 只处理带有同样 identifier 的 action 的 reducer
@@ -327,7 +327,7 @@ function identify(identifier, reducer) {
 
 现在我们的 action 需要带有 identifier 
 
-```js
+```javascript
 let reducer = identify('one', counterReducer),
 
 reducer(1, {
