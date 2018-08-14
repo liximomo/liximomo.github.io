@@ -8,7 +8,9 @@ excerpt: >
 
 ## 场景
 
-在 vue-router 的使用中，面临了一个问题，那就是 vue-router 的正确工作是建立在 `component` 层级和 `route` 层级一致的情况下。如下路由定义:
+在 vue-router 的使用中，有时会面临这样一个问题，那就是 vue-router 的设计要求 `component` 层级和 `route` 层级保持一致。
+
+当有如下的路由定义时:
 
 ```javascript
 const route = {
@@ -23,32 +25,26 @@ const route = {
 }
 ```
 
-`List` 组件必需在自己的模板内包含 `router-view` 组件，`detail` 路由才有机会被匹配。
+则 `List` 组件需在自己的模板内包含 `router-view` 组件，`/list` 与 `detail/:id` 路由的层级关系要在组件中体现出来。
 
-```javascript
-const route = {
-  path: '/list',
-  name: 'list',
-  component: List,
-  children: [{
-    path: 'detail/:id',
-    name: 'detail',
-    component: Detial,
-  }]
-}
+```jsx
+// in List.vue
+<template>
+  <div id="list">
+    <h5>This is list.</h5>
+    <router-view></router-view>
+  </div>
+</template>
 ```
 
-在这种情况下，`List` 和 `Detail` 组件会同时出现。如下：
+在这种情况下，当导航至 `/list/detail/1` 时, `List` 和 `Detail` 组件会同时渲染至页面中。如下：
 
 <iframe src="https://codesandbox.io/embed/jljoj11xz5?autoresize=1&hidenavigation=1" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
-实际中我的需求是，当进入 `detail` 路由时，`Detail` 组件替换掉 `List` 组件，页面中只显示 `Detail` 组件。
+在大多数情况下我们普遍的期望是当进入 `detail` 路由时，页面中只显示相应的 `Detail` 组件，而不在显示 `List` 组件。
 
-## 剖析
-这个问题初看很简单，如果只是为了达到 `List` 和 `Detail` 同时只有一个存在，只需将路由重新设计为扁平化的即可。然而我必须保持路由的层级设计，因为 `breadcrumb` 导航需要这个层级以正确工作。这个时候有人可能会思考，为 `breadcrumb` 导航单独配置，使它不在依赖路由，这个问题不就解决了？这样一来又引入了新的问题，每次路由变更时，都得重新配置导航。
-
-## 解决方案
-最终，我采取了高阶组件的方式，为组件提供子路由匹配时，将自己”隐藏“的功能。
+## 问题
+这个问题初看很简单，如果只是为了达到 `List` 和 `Detail` 同时只有一个存在，只需将路由重新设计为扁平化的即可。然而这会破坏这两个路由本身所拥有的父子语义，因为 UI 的表现而去破坏语义是不理想的。其次，我们项目中还有一个根据路由层级自动生成的面包屑导航，破坏 `list` 和 `detail` 的父子关系会导致面包屑导航无法正确工作。
 
 ## 思路
 ```
@@ -68,9 +64,11 @@ const route = {
   +------+        +------------+    
 ```
 
-关于如何判断当前最深匹配的路由是否与自身路由匹配这个问题，我们可以通过 `$route.matched` 来判断，`$route.matched` 存放的是当前所有匹配的路由，有外而内存放。`$route.matched` 数组中的最后一个路由就是当前最深匹配路由。拿到了最深路由后，我们可以进一步通过 `route.instances.default` 取得此路由设置的 `component` 的实例，然后与当前 `vue` 实例比较一下即可。最后我们通过 `vue` 的 `render` 方法来完成条件渲染。
- 
-具体实现：
+`$route.matched` 存放着当前所有匹配的路由, 中的最后一个项就是当前匹配层次最深的路由。我们可以通过路有对象的 `instances.default` 取得与此路由相关联的 `component` 实例，然后与当前组件实例比较一下即可。最后我们通过手写 `vue` 的 `render` 方法来完成条件渲染。
+
+最终，我们采取了高阶组件的实现方式，为组件提供子路由匹配时，将自己”隐藏“的功能。
+
+实现：
 
 ```javascript
 export default function routeReplaceSelf(component) {
@@ -89,7 +87,7 @@ export default function routeReplaceSelf(component) {
 }
 ```
 
-工作示例：
+示例：
 <iframe src="https://codesandbox.io/embed/wnzmv22ww8?autoresize=1&hidenavigation=1" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 还有一个小问题，当从子路由返回父组件时，父组件会重新 `mount`。这里可以借助 `keep-alive` 来缓存组件避免不必要的 `mount`。
@@ -106,9 +104,4 @@ render(h) {
 
 > I think this breaks the relationship between route config nesting and router-view nesting and can make things a bit harder to reason about.
 
-对此我是不认可的，强制路由层级和组件层级匹配，这样做增强了二者的耦合性。对路由本身而言它是没有组件这个感念的，毕竟它的名字就叫路由，而不是组件路由，页面路由。路由本身只应作为一个工具，告诉我们当前的 url 是否和其相定义相匹配，之后具体是路由到一个页面，一个组件，还是一个简单的回调则应由用户去控制。
-
-对比 `react-router` (v4)， 正真意义上实现了 `router` 的本质 —— pattern matcher，借助其我们可以完成很多复杂的需求。这里推荐一下 [page stack](http://tech.colla.me/zh/show/line_manga_smooth_transition_with_page_stack) 这篇文章。
-
-## 结语
-熟悉 vue 中 `render` 方法以及 `vnode`, 在很多场景下，我们都需要借助他们来实现需求。
+对此我是不认可的，强制路由层级和组件层级匹配，这样做增强了二者的耦合性。对路由本身而言它是没有组件这个感念的，毕竟它的名字就叫路由，而不是组件路由，页面路由。路由本身只应作为一个工具，告诉我们当前的 url 是否和其相定义相匹配，之后具体是路由到一个页面，一个组件，还是一个简单的回调则应由用户去控制。`react-router` (v4) 就是一个充分体现了路由灵活性的实例，借助其我们可以完成很多复杂的需求。这里推荐一下 [page stack](http://tech.colla.me/zh/show/line_manga_smooth_transition_with_page_stack) 这篇文章。
