@@ -43,6 +43,7 @@
         @include wrapper();
         line-height: $site-header-bar-height;
         font-size: 18px;
+        font-weight: bold;
     }
 
     .title.title--onBar {
